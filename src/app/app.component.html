@@ -1,1 +1,6 @@
-<h1>Hello World ;)</h1>
+<div class="container" [class.mobile]="isMobile">
+  <app-menu [isMobile]="isMobile"></app-menu>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

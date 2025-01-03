@@ -1,0 +1,13 @@
+<div class="menu" [class.mobile]="isMobile">
+  <img
+    [src]="imagePath + 'hat.svg'"
+    [routerLink]="'ai-chef'"
+    alt="AI recipe maker"
+  />
+  <img
+    [src]="imagePath + 'library.svg'"
+    [routerLink]="'library'"
+    alt="Recipe library"
+  />
+  <img [src]="imagePath + 'add.svg'" [routerLink]="'create'" alt="Add recipe" />
+</div>

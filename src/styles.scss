@@ -1,11 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-html, body {
-  background-color: #2e2e2e;
+:root {
+  --snow-white: #f9fdfe;
+  --dark-bg: #212121;
+  --dark-border: #71717a;
+}
+
+html,
+body {
+  background-color: var(--dark-bg);
   height: 100%;
   margin: 0;
   font-family: "Rubik", serif;
   font-optical-sizing: auto;
   font-style: normal;
+  //Input styling
+  --p-inputtext-background: var(--dark-bg) !important;
+  //Button styling
+  --p-button-primary-color: var(--dark-bg) !important;
+  --p-button-primary-background: var(--snow-white) !important;
+  --p-button-primary-border-color: var(--snow-white) !important;
+  --p-button-primary-hover-color: var(--snow-white) !important;
+  //List styling
+  --p-listbox-option-focus-background: var(--dark-bg) !important;
+  --p-listbox-option-selected-background: var(--dark-bg) !important;
+  --p-listbox-option-selected-color: var(--snow-white) !important;
+  --p-listbox-background: var(--dark-bg) !important;
+  --p-list-option-selected-focus-background: var(--dark-bg) !important;
+  --p-listbox-option-selected-focus-color: var(--snow-white) !important;
+  --p-listbox-list-padding: 0 !important;
+  //Float label styling
+  --p-floatlabel-on-active-background: var(--dark-bg) !important;
+  //Toggle styling
+  --p-toggleswitch-background: var(--dark-bg) !important;
+  --p-toggleswitch-hover-background: var(--dark-bg) !important;
+  --p-toggleswitch-handle-checked-background: var(--dark-bg) !important;
+  --p-toggleswitch-handle-checked-hover-background: var(--dark-bg) !important;
+}
+
+.highlight {
+  color: var(--p-primary-color) !important;
 }

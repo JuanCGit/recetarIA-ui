@@ -18,6 +18,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'library',
+    redirectTo: 'ai-chef',
   }
 ];

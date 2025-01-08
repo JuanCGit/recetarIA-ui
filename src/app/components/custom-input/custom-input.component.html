@@ -1,0 +1,10 @@
+<p-floatlabel variant="on">
+  <input
+    id="over_label"
+    type="text"
+    pInputText
+    (keydown.enter)="enterTriggered.emit()"
+    [(ngModel)]="customNgModel"
+  />
+  <label [for]="'on_label'">{{ customLabel }}</label>
+</p-floatlabel>

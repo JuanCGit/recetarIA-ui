@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { MenuComponent } from './components/menu/menu.component';
 import { RouterOutlet } from '@angular/router';
+import { ScreenSizeService } from '../services/screen-size.service';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +9,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   imports: [MenuComponent, RouterOutlet],
 })
-export class AppComponent implements OnInit {
-  isMobile: boolean = false;
+export class AppComponent {
+  isMobile = computed(() => this.screenSize.isMobile());
 
-  @HostListener('window:resize', [])
-  onResize() {
-    this.#checkScreenSize();
-  }
-
-  ngOnInit() {
-    this.#checkScreenSize();
-  }
-
-  #checkScreenSize() {
-    this.isMobile = window.innerWidth <= 745;
-  }
+  constructor(private screenSize: ScreenSizeService) {}
 }

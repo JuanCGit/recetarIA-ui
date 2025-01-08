@@ -1,5 +1,5 @@
-<div class="container" [class.mobile]="isMobile">
-  <app-menu [isMobile]="isMobile"></app-menu>
+<div class="container" [class.mobile]="isMobile()">
+  <app-menu [isMobile]="isMobile()"></app-menu>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

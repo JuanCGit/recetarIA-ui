@@ -1,13 +1,12 @@
 <div class="menu" [class.mobile]="isMobile">
-  <img
-    [src]="imagePath + 'hat.svg'"
-    [routerLink]="'ai-chef'"
-    alt="AI recipe maker"
-  />
-  <img
-    [src]="imagePath + 'library.svg'"
-    [routerLink]="'library'"
-    alt="Recipe library"
-  />
-  <img [src]="imagePath + 'add.svg'" [routerLink]="'create'" alt="Add recipe" />
+  @for(item of menuItems; track $index) {
+    <img
+      [src]="imagePath + (itemActive.isActive ? item.activeSrc : item.inactiveSrc)"
+      [routerLink]="item.link"
+      [alt]="item.alt"
+      [routerLinkActive]="item.routerLinkActive"
+      #itemActive="routerLinkActive"
+    />
+  }
 </div>
+

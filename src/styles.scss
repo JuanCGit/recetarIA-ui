@@ -3,6 +3,7 @@
 :root {
   --snow-white: #f9fdfe;
   --dark-bg: #212121;
+  --dark-bg-hover: #292929;
   --dark-border: #71717a;
 }
 
@@ -15,20 +16,12 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   //Input styling
-  --p-inputtext-background: var(--dark-bg) !important;
+  --p-inputtext-background: transparent !important;
   //Button styling
   --p-button-primary-color: var(--dark-bg) !important;
   --p-button-primary-background: var(--snow-white) !important;
   --p-button-primary-border-color: var(--snow-white) !important;
   --p-button-primary-hover-color: var(--snow-white) !important;
-  //List styling
-  --p-listbox-option-focus-background: var(--dark-bg) !important;
-  --p-listbox-option-selected-background: var(--dark-bg) !important;
-  --p-listbox-option-selected-color: var(--snow-white) !important;
-  --p-listbox-background: var(--dark-bg) !important;
-  --p-list-option-selected-focus-background: var(--dark-bg) !important;
-  --p-listbox-option-selected-focus-color: var(--snow-white) !important;
-  --p-listbox-list-padding: 0 !important;
   //Float label styling
   --p-floatlabel-on-active-background: var(--dark-bg) !important;
   //Toggle styling

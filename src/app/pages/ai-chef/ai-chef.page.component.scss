@@ -81,15 +81,46 @@
     overflow: auto;
     padding-bottom: 16px;
   }
-
   &__ingredient {
-    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    &:hover {
+      background-color: var(--dark-bg-hover);
+    }
+    input {
+      --p-inputtext-focus-ring-color: transparent !important;
+    }
+    img {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
   }
-  .mierdon {
+  &__list--border {
     border: 1px solid var(--dark-border);
     border-radius: 2px;
     max-height: 100%;
     overflow: auto;
+    input {
+      border: none;
+    }
+  }
+
+  &__no-ingredients {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__empty {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
   }
 
   &__input {

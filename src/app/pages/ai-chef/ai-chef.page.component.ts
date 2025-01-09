@@ -4,7 +4,7 @@ import { ToggleSwitch } from 'primeng/toggleswitch';
 import { ScreenSizeService } from '../../../services/screen-size.service';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
-import {InputText} from 'primeng/inputtext';
+import {IngredientList} from './components/ingredient-list/ingredient-list';
 
 @Component({
   selector: 'app-ai-chef',
@@ -17,14 +17,14 @@ import {InputText} from 'primeng/inputtext';
     ToggleSwitch,
     Button,
     CustomInputComponent,
-    InputText,
+    IngredientList,
   ],
 })
 export class AiChefPageComponent {
   writeIngredients = signal<boolean>(true);
   hoverUploader = signal<boolean>(false);
   loadedRecipe = signal<boolean>(false);
-  ingredients = signal<FormControl[]>([]); // Array de FormControl
+  ingredients = signal<FormControl[]>([]);
   ingredientInput = signal<string>('');
   isMobile = computed(() => this.screenSize.isMobile());
 
@@ -36,11 +36,5 @@ export class AiChefPageComponent {
     });
     this.ingredients.set([...this.ingredients(), newIngredient]);
     this.ingredientInput.set('');
-  }
-
-  removeIngredient(index: number): void {
-    const updatedIngredients = [...this.ingredients()];
-    updatedIngredients.splice(index, 1);
-    this.ingredients.set(updatedIngredients);
   }
 }

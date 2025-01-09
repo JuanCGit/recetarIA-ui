@@ -30,39 +30,7 @@
             />
             <p-button label="Añadir" (click)="addIngredient()" />
           </div>
-          @if (ingredients().length) {
-            <div class="chef-container__list">
-              <div class="chef-container__list--border">
-                @for (
-                  ingredient of ingredients();
-                  track ingredient;
-                  let i = $index
-                ) {
-                  <div class="chef-container__ingredient">
-                    <input
-                      pInputText
-                      type="text"
-                      [formControl]="ingredients()[i]"
-                    />
-                    <img
-                      src="../../../assets/icons/bin.svg"
-                      alt="Remove ingredient"
-                      (click)="removeIngredient(i)"
-                    />
-                  </div>
-                }
-              </div>
-            </div>
-          } @else {
-            <div class="chef-container__no-ingredients">
-              <div class="chef-container__empty">
-                <img src="../../../assets/icons/mitt.svg" alt="" />
-                <h3>
-                  Añade algún ingrediente <span class="highlight">;)</span>
-                </h3>
-              </div>
-            </div>
-          }
+          <app-ingredient-list [ingredients]="ingredients"/>
         </div>
       }
     } @else {

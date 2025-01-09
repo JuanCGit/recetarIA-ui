@@ -1,0 +1,54 @@
+.ingredient-list {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 16px;
+  &__border {
+    border: 1px solid var(--dark-border);
+    border-radius: 2px;
+    max-height: 100%;
+    overflow: auto;
+    input {
+      border: none;
+    }
+  }
+  &__ingredient {
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    &:hover {
+      background-color: var(--dark-bg-hover);
+    }
+    input {
+      --p-inputtext-focus-ring-color: transparent !important;
+    }
+    img {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  }
+}
+
+.no-ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    gap: 16px;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+:host {
+  height: 100%;
+}

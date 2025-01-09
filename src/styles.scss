@@ -29,6 +29,19 @@ body {
   --p-toggleswitch-hover-background: var(--dark-bg) !important;
   --p-toggleswitch-handle-checked-background: var(--dark-bg) !important;
   --p-toggleswitch-handle-checked-hover-background: var(--dark-bg) !important;
+  //Text Editor Styling
+  --p-editor-toolbar-background: transparent !important;
+  --p-editor-content-background: transparent !important;
+}
+
+.p-editor-container {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .p-editor-content {
+    overflow: hidden;
+  }
 }
 
 .highlight {

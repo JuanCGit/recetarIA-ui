@@ -133,3 +133,18 @@
     }
   }
 }
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 16px;
+  overflow: hidden;
+
+  p-editor {
+    height: 100%;
+    overflow: hidden;
+  }
+}

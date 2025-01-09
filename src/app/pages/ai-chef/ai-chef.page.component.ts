@@ -1,10 +1,10 @@
 import { Component, signal, computed } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleSwitch } from 'primeng/toggleswitch';
 import { ScreenSizeService } from '../../../services/screen-size.service';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
-import {IngredientList} from './components/ingredient-list/ingredient-list';
+import { IngredientList } from './components/ingredient-list/ingredient-list';
+import { Editor } from 'primeng/editor';
 
 @Component({
   selector: 'app-ai-chef',
@@ -14,10 +14,10 @@ import {IngredientList} from './components/ingredient-list/ingredient-list';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    ToggleSwitch,
     Button,
     CustomInputComponent,
     IngredientList,
+    Editor,
   ],
 })
 export class AiChefPageComponent {

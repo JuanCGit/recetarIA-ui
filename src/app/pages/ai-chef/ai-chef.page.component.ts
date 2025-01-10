@@ -32,7 +32,7 @@ export class AiChefPageComponent {
 
   addIngredient(): void {
     const newIngredient = new FormControl(this.ingredientInput(), {
-      nonNullable: true,
+      nonNullable: true
     });
     this.ingredients.set([...this.ingredients(), newIngredient]);
     this.ingredientInput.set('');

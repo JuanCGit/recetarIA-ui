@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms';
   imports: [FloatLabel, InputText, FormsModule],
 })
 export class CustomInputComponent {
-  @Input() customNgModel: WritableSignal<any> = signal(undefined);
+  @Input() customNgModel: WritableSignal<string> = signal('');
   @Input() customLabel: string = '';
   @Output() enterTriggered: EventEmitter<void> = new EventEmitter();
 }

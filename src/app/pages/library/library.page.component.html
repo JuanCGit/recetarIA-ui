@@ -1,1 +1,23 @@
-<h1>Library</h1>
+<div class="library" [class.mobile]="isMobile()">
+  <h1 class="library__title"><span class="highlight">Mis</span> Recetas!</h1>
+  @if (recipes().length) {
+    <app-custom-input [customNgModel]="recipesInput" customLabel="Buscar receta"/>
+    <div class="cards" [class.mobile]="isMobile()">
+      @for (recipe of filteredRecipes(); track recipe.name) {
+        <div class="cards__recipe">
+          <div
+            class="cards__image"
+            [style.background-image]="'url(' + recipe.photo + ')'"
+          ></div>
+          <span class="cards__title">
+          {{ recipe.name }}
+        </span>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="library__empty">
+      <h2>:( Todavía no tienes recetas, genera una <span class="highlight" [routerLink]="'/ai-chef'">con IA</span> o <span class="highlight" [routerLink]="'/create'">escribe la tuya</span></h2>
+    </div>
+  }
+</div>

@@ -4,7 +4,6 @@ import { ScreenSizeService } from '../../../services/screen-size.service';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
 import { IngredientList } from './components/ingredient-list/ingredient-list';
-import { Editor } from 'primeng/editor';
 
 @Component({
   selector: 'app-ai-chef',
@@ -17,13 +16,11 @@ import { Editor } from 'primeng/editor';
     Button,
     CustomInputComponent,
     IngredientList,
-    Editor,
   ],
 })
 export class AiChefPageComponent {
   writeIngredients = signal<boolean>(true);
   hoverUploader = signal<boolean>(false);
-  loadedRecipe = signal<boolean>(false);
   ingredients = signal<FormControl[]>([]);
   ingredientInput = signal<string>('');
   isMobile = computed(() => this.screenSize.isMobile());
@@ -32,7 +29,7 @@ export class AiChefPageComponent {
 
   addIngredient(): void {
     const newIngredient = new FormControl(this.ingredientInput(), {
-      nonNullable: true
+      nonNullable: true,
     });
     this.ingredients.set([...this.ingredients(), newIngredient]);
     this.ingredientInput.set('');

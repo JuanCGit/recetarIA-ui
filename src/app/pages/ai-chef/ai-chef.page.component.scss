@@ -133,19 +133,40 @@
       align-self: end;
     }
   }
-}
 
-.recipe-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 16px;
-  overflow: hidden;
-
-  p-editor {
+  .recipe-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
     height: 100%;
+    padding-bottom: 16px;
     overflow: hidden;
+
+    &__header {
+      display: flex;
+      align-items: end;
+      gap: 16px;
+    }
+
+    .file-upload {
+      ::ng-deep.p-fileupload {
+        width: max-content;
+      }
+      &--mobile {
+        ::ng-deep {
+          p-button, button {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+
+    p-editor {
+      height: 100%;
+      overflow: hidden;
+    }
   }
+
 }
+

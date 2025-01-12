@@ -13,7 +13,27 @@ import {RouterLink} from '@angular/router';
 })
 export class LibraryPageComponent {
   isMobile = computed(() => this.screenSize.isMobile());
-  recipesMock: IRecipeCard[] = [];
+  recipesMock: IRecipeCard[] = [{
+    recipeId: 987,
+    name: 'string',
+    photo: 'https://thispersondoesnotexist.com/'
+  },{
+    recipeId: 987,
+    name: 'string',
+    photo: 'https://thispersondoesnotexist.com/'
+  },{
+    recipeId: 987,
+    name: 'string',
+    photo: 'https://thispersondoesnotexist.com/'
+  },{
+    recipeId: 987,
+    name: 'string',
+    photo: 'https://thispersondoesnotexist.com/'
+  },{
+    recipeId: 987,
+    name: 'string',
+    photo: 'https://thispersondoesnotexist.com/'
+  }];
   recipes: WritableSignal<IRecipeCard[]> = signal([
     ...this.recipesMock,
     ...this.recipesMock,

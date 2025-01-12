@@ -1,1 +1,49 @@
-<h1>Create Recipe</h1>
+<div class="create-container" [class.mobile]="isMobile()">
+  <h1 class="create-container__title">
+    Escribe <span class="highlight">tu</span> receta
+  </h1>
+  <div class="create-container__content">
+    <div class="create-container__recipe">
+      <div class="create-container__recipe-header">
+        <app-custom-input [customLabel]="'Nombre de la receta'" />
+        @if (!isMobile()) {
+          <p-fileupload
+            class="file-upload"
+            mode="basic"
+            name="demo[]"
+            chooseIcon="pi pi-upload"
+            accept="image/*"
+            maxFileSize="1000000"
+            [auto]="true"
+            chooseLabel="Imagen de la receta"
+          />
+        }
+      </div>
+      @if (isMobile()) {
+        <p-fileupload
+          class="file-upload--mobile"
+          mode="basic"
+          name="demo[]"
+          chooseIcon="pi pi-upload"
+          accept="image/*"
+          maxFileSize="1000000"
+          [auto]="true"
+          chooseLabel="Imagen de la receta"
+        />
+      }
+      <p-editor></p-editor>
+    </div>
+  </div>
+
+  <div class="create-container__actions">
+    @if (loadedRecipe()) {
+      <p-button [label]="'Guardar receta'" />
+    } @else {
+      <p-button
+        [style.visibility]="!ingredients().length ? 'hidden' : 'visible'"
+        [label]="'Generar receta'"
+        (click)="addIngredient()"
+      />
+    }
+  </div>
+</div>

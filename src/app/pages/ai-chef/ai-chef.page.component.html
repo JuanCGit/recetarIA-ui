@@ -3,8 +3,7 @@
     Crea tu Receta con <span class="highlight">IA!</span>
   </h1>
   <div class="chef-container__content">
-    @if (!loadedRecipe()) {
-      <!--
+    <!--
       TODO: Add photo functionality
       <div class="chef-container__options">
         <span (click)="writeIngredients.set(false)">Subir fotografía</span>
@@ -12,49 +11,37 @@
         <span (click)="writeIngredients.set(true)">Escribir ingredientes</span>
       </div>
       -->
-      @if (!writeIngredients()) {
-        <div
-          class="chef-container__upload"
-          (dragenter)="hoverUploader.set(true)"
-          (dragleave)="hoverUploader.set(false)"
-          [class.upload--active]="hoverUploader()"
-        >
-          <div class="chef-container__u-icon">
-            <img src="../../../assets/icons/upload.svg" alt="" />
-          </div>
+    @if (!writeIngredients()) {
+      <div
+        class="chef-container__upload"
+        (dragenter)="hoverUploader.set(true)"
+        (dragleave)="hoverUploader.set(false)"
+        [class.upload--active]="hoverUploader()"
+      >
+        <div class="chef-container__u-icon">
+          <img src="../../../assets/icons/upload.svg" alt="" />
         </div>
-      } @else {
-        <div class="chef-container__write">
-          <div class="chef-container__input">
-            <app-custom-input
-              [customNgModel]="ingredientInput"
-              [customLabel]="'Ingrediente'"
-              (enterTriggered)="addIngredient()"
-            />
-            <p-button label="Añadir" (click)="addIngredient()" />
-          </div>
-          <app-ingredient-list [ingredients]="ingredients"/>
-        </div>
-      }
+      </div>
     } @else {
-      <div class="recipe-container">
-        <app-custom-input [customLabel]="'Nombre de la receta'" />
-        <p-editor></p-editor>
+      <div class="chef-container__write">
+        <div class="chef-container__input">
+          <app-custom-input
+            [customNgModel]="ingredientInput"
+            [customLabel]="'Ingrediente'"
+            (enterTriggered)="addIngredient()"
+          />
+          <p-button label="Añadir" (click)="addIngredient()" />
+        </div>
+        <app-ingredient-list [ingredients]="ingredients" />
       </div>
     }
   </div>
 
   <div class="chef-container__actions">
-    @if (loadedRecipe()) {
-      <p-button
-        [label]="'Guardar receta'"
-      />
-    } @else {
-      <p-button
-        [style.visibility]="!ingredients().length ? 'hidden' : 'visible'"
-        [label]="'Generar receta'"
-        (click)="addIngredient()"
-      />
-    }
+    <p-button
+      [style.visibility]="!ingredients().length ? 'hidden' : 'visible'"
+      [label]="'Generar receta'"
+      (click)="addIngredient()"
+    />
   </div>
 </div>

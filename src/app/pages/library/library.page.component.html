@@ -4,7 +4,7 @@
     <app-custom-input [customNgModel]="recipesInput" customLabel="Buscar receta"/>
     <div class="cards" [class.mobile]="isMobile()">
       @for (recipe of filteredRecipes(); track recipe.name) {
-        <div class="cards__recipe">
+        <div class="cards__recipe" (click)="navigateToRecipe(recipe.recipeId)">
           <div
             class="cards__image"
             [style.background-image]="'url(' + recipe.photo + ')'"

@@ -15,27 +15,26 @@ export class LibraryPageComponent {
   isMobile = computed(() => this.screenSize.isMobile());
   recipesMock: IRecipeCard[] = [{
     recipeId: 987,
-    name: 'string',
+    name: 'Macarrones Boloñesa',
     photo: 'https://thispersondoesnotexist.com/'
   },{
     recipeId: 987,
-    name: 'string',
+    name: 'Arroz al horno',
     photo: 'https://thispersondoesnotexist.com/'
   },{
     recipeId: 987,
-    name: 'string',
+    name: 'Arroz a la cubana',
     photo: 'https://thispersondoesnotexist.com/'
   },{
     recipeId: 987,
-    name: 'string',
+    name: 'Brioche',
     photo: 'https://thispersondoesnotexist.com/'
   },{
     recipeId: 987,
-    name: 'string',
+    name: 'Pastel',
     photo: 'https://thispersondoesnotexist.com/'
   }];
   recipes: WritableSignal<IRecipeCard[]> = signal([
-    ...this.recipesMock,
     ...this.recipesMock,
   ]);
   recipesInput = signal<string>('');

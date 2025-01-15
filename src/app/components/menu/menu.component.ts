@@ -18,7 +18,8 @@ export class MenuComponent {
       activeSrc: 'active-hat.svg',
       inactiveSrc: 'hat.svg',
       routerLinkActive: 'active',
-      active: 'aiChefActive'
+      active: 'aiChefActive',
+      hover: false
     },
     {
       link: 'library',
@@ -26,7 +27,8 @@ export class MenuComponent {
       activeSrc: 'active-library.svg',
       inactiveSrc: 'library.svg',
       routerLinkActive: 'active',
-      active: 'libraryActive'
+      active: 'libraryActive',
+      hover: false
     },
     {
       link: 'create',
@@ -34,7 +36,8 @@ export class MenuComponent {
       activeSrc: 'active-add.svg',
       inactiveSrc: 'add.svg',
       routerLinkActive: 'active',
-      active: 'createActive'
+      active: 'createActive',
+      hover: false
     }
   ];
 

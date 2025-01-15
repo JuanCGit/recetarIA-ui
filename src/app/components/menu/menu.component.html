@@ -1,12 +1,13 @@
 <div class="menu" [class.mobile]="isMobile">
   @for(item of menuItems; track $index) {
     <img
-      [src]="imagePath + (itemActive.isActive ? item.activeSrc : item.inactiveSrc)"
+      [src]="imagePath + (itemActive.isActive || menuItems[$index].hover ? item.activeSrc : item.inactiveSrc)"
       [routerLink]="item.link"
       [alt]="item.alt"
       [routerLinkActive]="item.routerLinkActive"
       #itemActive="routerLinkActive"
+      (mouseenter)="menuItems[$index].hover = true"
+      (mouseleave)="menuItems[$index].hover = false"
     />
   }
 </div>
-

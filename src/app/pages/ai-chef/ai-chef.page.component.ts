@@ -4,6 +4,8 @@ import { ScreenSizeService } from '../../../services/screen-size.service';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
 import { IngredientList } from './components/ingredient-list/ingredient-list';
+import { recipeService } from '../../services/recipes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ai-chef',
@@ -25,7 +27,7 @@ export class AiChefPageComponent {
   ingredientInput = signal<string>('');
   isMobile = computed(() => this.screenSize.isMobile());
 
-  constructor(private screenSize: ScreenSizeService) {}
+  constructor(private screenSize: ScreenSizeService, private recipeService: recipeService, private router: Router) {}
 
   addIngredient(): void {
     const newIngredient = new FormControl(this.ingredientInput(), {
@@ -33,5 +35,12 @@ export class AiChefPageComponent {
     });
     this.ingredients.set([...this.ingredients(), newIngredient]);
     this.ingredientInput.set('');
+  }
+
+  generateRecipe() {
+    this.recipeService.generateRecipe(this.ingredients().map((control) => control.value)).subscribe((resp) => {
+      this.recipeService.generatedRecipe.set(resp)
+      this.router.navigateByUrl('/create');
+    })
   }
 }

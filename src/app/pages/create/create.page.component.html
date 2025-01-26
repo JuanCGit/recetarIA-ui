@@ -1,11 +1,18 @@
 <div class="create-container" [class.mobile]="isMobile()">
   <h1 class="create-container__title">
-    Escribe <span class="highlight">tu</span> receta
+    @if (generatedRecipe()) {
+      Tu receta <span class="highlight">generada</span>
+    } @else {
+      Escribe <span class="highlight">tu</span> receta
+    }
   </h1>
   <div class="create-container__content">
     <div class="create-container__recipe">
       <div class="create-container__recipe-header">
-        <app-custom-input [customLabel]="'Nombre de la receta'" />
+        <app-custom-input
+          [customLabel]="'Nombre de la receta'"
+          [customNgModel]="recipeName"
+        />
         @if (!isMobile()) {
           <p-fileupload
             class="file-upload"
@@ -31,7 +38,7 @@
           chooseLabel="Imagen de la receta"
         />
       }
-      <p-editor></p-editor>
+      <p-editor [(ngModel)]="recipeDescription"></p-editor>
     </div>
   </div>
 

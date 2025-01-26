@@ -15,12 +15,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
       padding-bottom: 16px;
     }
 
     &__actions {
       display: flex;
       gap: 16px;
+
+      .pi {
+        cursor: pointer;
+        &:hover {
+          color: var(--p-primary-color);
+        }
+      }
+
+      .pi-trash:hover {
+        color: #d91f36;
+      }
     }
 
     &__title {
@@ -49,6 +61,15 @@
       p-editor {
         height: 100%;
         overflow: hidden;
+      }
+
+      .remove-header {
+        border-top: 1px solid var(--p-editor-toolbar-border-color);
+        ::ng-deep {
+          .p-editor-toolbar {
+            display: none;
+          }
+        }
       }
     }
   }

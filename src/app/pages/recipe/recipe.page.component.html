@@ -1,3 +1,22 @@
 <div class="recipe-container" [class.mobile]="isMobile()">
-  <h1>Recipe Works ;)</h1>
+  <div class="recipe-container__header">
+    <h1 class="recipe-container__title">
+      Macarrones con tomatico
+    </h1>
+    <div class="recipe-container__actions">
+      <i class="pi pi-check"></i>
+      <i class="pi pi-times"></i>
+    </div>
+  </div>
+
+  <div class="recipe-container__content">
+    <div class="recipe-container__recipe">
+      <p-editor [(ngModel)]="recipeDescription">
+      </p-editor>
+    </div>
+  </div>
+
+  <div class="recipe-container__actions">
+    <p-button [label]="'Guardar receta'" />
+  </div>
 </div>

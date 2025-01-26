@@ -43,14 +43,6 @@
   </div>
 
   <div class="create-container__actions">
-    @if (loadedRecipe()) {
-      <p-button [label]="'Guardar receta'" />
-    } @else {
-      <p-button
-        [style.visibility]="!ingredients().length ? 'hidden' : 'visible'"
-        [label]="'Generar receta'"
-        (click)="addIngredient()"
-      />
-    }
+    <p-button [label]="'Guardar receta'" />
   </div>
 </div>

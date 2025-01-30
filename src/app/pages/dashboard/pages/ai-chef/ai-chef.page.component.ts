@@ -1,11 +1,11 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ScreenSizeService } from '../../../services/screen-size.service';
 import { Button } from 'primeng/button';
-import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
+import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
 import { IngredientList } from './components/ingredient-list/ingredient-list';
-import { recipeService } from '../../services/recipes.service';
 import { Router } from '@angular/router';
+import { RecipesService } from '../../../../services/recipes/recipes.service';
+import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 
 @Component({
   selector: 'app-ai-chef',
@@ -21,13 +21,14 @@ import { Router } from '@angular/router';
   ],
 })
 export class AiChefPageComponent {
+  protected readonly screenSize = inject(ScreenSizeService);
+  #router = inject(Router);
+  #recipesService = inject(RecipesService);
+
   writeIngredients = signal<boolean>(true);
   hoverUploader = signal<boolean>(false);
   ingredients = signal<FormControl[]>([]);
   ingredientInput = signal<string>('');
-  isMobile = computed(() => this.screenSize.isMobile());
-
-  constructor(private screenSize: ScreenSizeService, private recipeService: recipeService, private router: Router) {}
 
   addIngredient(): void {
     const newIngredient = new FormControl(this.ingredientInput(), {
@@ -38,9 +39,11 @@ export class AiChefPageComponent {
   }
 
   generateRecipe() {
-    this.recipeService.generateRecipe(this.ingredients().map((control) => control.value)).subscribe((resp) => {
-      this.recipeService.generatedRecipe.set(resp)
-      this.router.navigateByUrl('/create');
-    })
+    this.#recipesService
+      .generateRecipe(this.ingredients().map((control) => control.value))
+      .subscribe((resp) => {
+        this.#recipesService.generatedRecipe.set(resp);
+        this.#router.navigateByUrl('/create');
+      });
   }
 }

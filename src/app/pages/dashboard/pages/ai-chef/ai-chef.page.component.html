@@ -1,4 +1,4 @@
-<div class="chef-container" [class.mobile]="isMobile()">
+<div class="chef-container" [class.mobile]="screenSize.isMobile()">
   <h1 class="chef-container__title">
     Crea tu Receta con <span class="highlight">IA!</span>
   </h1>
@@ -19,7 +19,7 @@
         [class.upload--active]="hoverUploader()"
       >
         <div class="chef-container__u-icon">
-          <img src="../../../assets/icons/upload.svg" alt="" />
+          <img src="/assets/icons/upload.svg" alt="" />
         </div>
       </div>
     } @else {

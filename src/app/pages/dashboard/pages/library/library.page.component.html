@@ -1,4 +1,4 @@
-<div class="library" [class.mobile]="isMobile()">
+<div class="library" [class.mobile]="screenSize.isMobile()">
   <h1 class="library__title"><span class="highlight">Mis</span> Recetas!</h1>
   @if (recipes().length) {
     <app-custom-input
@@ -6,7 +6,7 @@
       customLabel="Buscar receta"
     />
     @if (filteredRecipes().length) {
-      <div class="cards" [class.mobile]="isMobile()">
+      <div class="cards" [class.mobile]="screenSize.isMobile()">
         @for (recipe of filteredRecipes(); track recipe.name) {
           <div
             class="cards__recipe"

@@ -1,4 +1,4 @@
-<div class="create-container" [class.mobile]="isMobile()">
+<div class="create-container" [class.mobile]="screenSize.isMobile()">
   <h1 class="create-container__title">
     @if (generatedRecipe()) {
       Tu receta <span class="highlight">generada</span>
@@ -13,7 +13,7 @@
           [customLabel]="'Nombre de la receta'"
           [customNgModel]="recipeName"
         />
-        @if (!isMobile()) {
+        @if (!screenSize.isMobile()) {
           <p-fileupload
             class="file-upload"
             mode="basic"
@@ -26,7 +26,7 @@
           />
         }
       </div>
-      @if (isMobile()) {
+      @if (screenSize.isMobile()) {
         <p-fileupload
           class="file-upload--mobile"
           mode="basic"

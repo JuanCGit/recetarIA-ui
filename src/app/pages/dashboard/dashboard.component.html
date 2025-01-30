@@ -1,0 +1,7 @@
+@let mobile = screenSize.isMobile() ?? true;
+<div class="container" [class.mobile]="mobile">
+  <app-menu [isMobile]="mobile"></app-menu>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

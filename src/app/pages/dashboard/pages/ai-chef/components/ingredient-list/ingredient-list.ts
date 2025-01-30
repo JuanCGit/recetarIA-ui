@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { Component, Input, signal, WritableSignal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 
@@ -15,9 +10,7 @@ import { InputText } from 'primeng/inputtext';
   imports: [ReactiveFormsModule, InputText],
 })
 export class IngredientList {
-  @Input() ingredients: WritableSignal<FormControl[]> = signal<FormControl[]>(
-    [],
-  );
+  @Input() ingredients = signal<FormControl[]>([]);
 
   removeIngredient(index: number): void {
     const updatedIngredients = [...this.ingredients()];

@@ -1,7 +1,11 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { IAIRecipe, IRecipe } from '../../interfaces/recipes.interfaces';
+import {
+  IAIRecipe,
+  ICreateRecipe,
+  IRecipe,
+} from '../../interfaces/recipes.interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -24,5 +28,9 @@ export class RecipesService {
     return this.#http.get<IRecipe>(
       `${environment.apiUrl}/recipes/${recipeId ?? 0}`,
     );
+  }
+
+  createRecipe(recipe: ICreateRecipe): Observable<IRecipe> {
+    return this.#http.post<IRecipe>(`${environment.apiUrl}/recipes/`, recipe);
   }
 }

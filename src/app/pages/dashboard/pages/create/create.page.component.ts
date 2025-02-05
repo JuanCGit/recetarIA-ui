@@ -6,6 +6,7 @@ import { FileUpload } from 'primeng/fileupload';
 import { FormsModule } from '@angular/forms';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +18,7 @@ import { RecipesService } from '../../../../services/recipes/recipes.service';
 export class CreatePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #recipesService = inject(RecipesService);
+  #router = inject(Router);
 
   generatedRecipe = computed(() => this.#recipesService.generatedRecipe());
   recipeName = linkedSignal(
@@ -25,4 +27,13 @@ export class CreatePageComponent {
   recipeDescription = linkedSignal(
     () => this.#recipesService.generatedRecipe()?.recipe ?? '',
   );
+
+  createRecipe() {
+    this.#recipesService
+      .createRecipe({
+        name: this.recipeName(),
+        description: this.recipeDescription(),
+      })
+      .subscribe((recipe) => this.#router.navigate(['/library/', recipe.id]));
+  }
 }

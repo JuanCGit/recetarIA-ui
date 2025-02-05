@@ -9,3 +9,8 @@ export interface IAIRecipe {
   name: string;
   recipe: string;
 }
+
+export interface ICreateRecipe {
+  name: string;
+  description: string;
+}

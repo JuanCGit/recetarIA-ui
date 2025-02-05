@@ -35,7 +35,7 @@ export class RecipePageComponent {
   });
   recipeName = linkedSignal(() => this.recipeResource.value()?.name ?? '');
   recipeDescription = linkedSignal(
-    () => this.recipeResource.value()?.recipe ?? '',
+    () => this.recipeResource.value()?.description ?? '',
   );
   isEditing = signal<boolean>(false);
 }

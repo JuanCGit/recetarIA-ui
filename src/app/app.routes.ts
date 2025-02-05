@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './pages/auth/auth.component';
-import { nonAuthGuard } from './guards/auth.guard';
+import { authGuard, nonAuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
@@ -42,7 +42,7 @@ export const routes: Routes = [
         redirectTo: 'ai-chef',
       },
     ],
-    //canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'login',

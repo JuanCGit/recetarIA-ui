@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { IGeneratedRecipe } from '../../interfaces/recipes.interfaces';
+import { IAIRecipe, IRecipe } from '../../interfaces/recipes.interfaces';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,9 @@ import { IGeneratedRecipe } from '../../interfaces/recipes.interfaces';
 export class RecipesService {
   #http = inject(HttpClient);
 
-  generatedRecipe = signal<IGeneratedRecipe | undefined>(undefined);
+  generatedRecipe = signal<IAIRecipe | undefined>(undefined);
 
-  generateRecipe(ingredients: string[]): Observable<IGeneratedRecipe> {
+  generateRecipe(ingredients: string[]): Observable<IAIRecipe> {
     const mockList = ingredients.map((ingredient) => `<li>${ingredient}</li>`);
     return of({
       name: 'Macarrones',
@@ -19,15 +20,9 @@ export class RecipesService {
     });
   }
 
-  getRecipe(recipeId?: number): Observable<IGeneratedRecipe> {
-    if (!recipeId)
-      return of({
-        name: 'Fake Name',
-        recipe: 'Fake Recipe',
-      });
-    return of({
-      name: 'Macarrones' + recipeId,
-      recipe: `<h1>Recipe Generated:</h1><ul><li>Macarrones</li></ul>`,
-    });
+  getRecipe(recipeId?: number): Observable<IRecipe> {
+    return this.#http.get<IRecipe>(
+      `${environment.apiUrl}/recipes/${recipeId ?? 0}`,
+    );
   }
 }

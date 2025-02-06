@@ -37,5 +37,6 @@ export class RecipePageComponent {
   recipeDescription = linkedSignal(
     () => this.recipeResource.value()?.description ?? '',
   );
+  isAuthor = linkedSignal(() => this.recipeResource.value()?.isAuthor ?? '');
   isEditing = signal<boolean>(false);
 }

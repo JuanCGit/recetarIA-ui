@@ -3,6 +3,7 @@ export interface IRecipe {
   name: string;
   description: string;
   userId: number;
+  isAuthor: boolean;
 }
 
 export interface IAIRecipe {

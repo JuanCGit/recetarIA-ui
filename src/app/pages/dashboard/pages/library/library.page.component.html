@@ -1,6 +1,6 @@
 <div class="library" [class.mobile]="screenSize.isMobile()">
   <h1 class="library__title"><span class="highlight">Mis</span> Recetas!</h1>
-  @if (recipes().length) {
+  @if (recipesResource.value()?.length) {
     <app-custom-input
       [customNgModel]="recipesInput"
       customLabel="Buscar receta"
@@ -8,13 +8,12 @@
     @if (filteredRecipes().length) {
       <div class="cards" [class.mobile]="screenSize.isMobile()">
         @for (recipe of filteredRecipes(); track recipe.name) {
-          <div
-            class="cards__recipe"
-            (click)="navigateToRecipe(recipe.recipeId)"
-          >
+          <div class="cards__recipe" (click)="navigateToRecipe(recipe.id)">
             <div
               class="cards__image"
-              [style.background-image]="'url(' + recipe.photo + ')'"
+              [style.background-image]="
+                'url(https://thispersondoesnotexist.com/)'
+              "
             ></div>
             <span class="cards__title">
               {{ recipe.name }}

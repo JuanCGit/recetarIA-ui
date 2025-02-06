@@ -30,6 +30,10 @@ export class RecipesService {
     );
   }
 
+  getRecipes(): Observable<IRecipe[]> {
+    return this.#http.get<IRecipe[]>(`${environment.apiUrl}/recipes/`);
+  }
+
   createRecipe(recipe: ICreateRecipe): Observable<IRecipe> {
     return this.#http.post<IRecipe>(`${environment.apiUrl}/recipes/`, recipe);
   }

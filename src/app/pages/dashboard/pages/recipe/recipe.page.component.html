@@ -10,12 +10,14 @@
     }
     <div class="recipe-container__actions">
       <i class="pi pi-share-alt"></i>
-      <i
-        class="pi pi-pencil"
-        [class.highlight]="isEditing()"
-        (click)="isEditing.set(!isEditing())"
-      ></i>
-      <i class="pi pi-trash"></i>
+      @if (isAuthor()) {
+        <i
+          class="pi pi-pencil"
+          [class.highlight]="isEditing()"
+          (click)="isEditing.set(!isEditing())"
+        ></i>
+        <i class="pi pi-trash"></i>
+      }
     </div>
   </div>
 

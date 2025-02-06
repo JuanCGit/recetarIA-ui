@@ -2,6 +2,7 @@ import {
   Component,
   computed,
   inject,
+  resource,
   signal,
   WritableSignal,
 } from '@angular/core';
@@ -9,6 +10,8 @@ import { CustomInputComponent } from '../../../../components/custom-input/custom
 import { IRecipeCard } from './interfaces/recipe-card.interface';
 import { Router, RouterLink } from '@angular/router';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
+import { firstValueFrom } from 'rxjs';
+import { RecipesService } from '../../../../services/recipes/recipes.service';
 
 @Component({
   selector: 'app-library',
@@ -20,6 +23,7 @@ import { ScreenSizeService } from '../../../../services/screen/screen-size.servi
 export class LibraryPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #router = inject(Router);
+  #recipesService = inject(RecipesService);
 
   recipesMock: IRecipeCard[] = [
     {
@@ -48,10 +52,14 @@ export class LibraryPageComponent {
       photo: 'https://thispersondoesnotexist.com/',
     },
   ];
-  recipes: WritableSignal<IRecipeCard[]> = signal([...this.recipesMock]);
+  recipesResource = resource({
+    loader: async ({ request }) => {
+      return firstValueFrom(this.#recipesService.getRecipes());
+    },
+  });
   recipesInput = signal<string>('');
   filteredRecipes = computed(() => {
-    return this.recipes().filter((recipe) =>
+    return (this.recipesResource.value() ?? []).filter((recipe) =>
       recipe.name.toLowerCase().includes(this.recipesInput().toLowerCase()),
     );
   });

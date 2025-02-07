@@ -34,7 +34,14 @@
 
   @if (isEditing()) {
     <div class="recipe-container__actions">
-      <p-button [label]="'Guardar receta'" />
+      <p-button
+        [label]="'Guardar receta'"
+        (click)="editRecipe()"
+        [disabled]="
+          recipeResource.value()?.name === recipeName() &&
+          recipeResource.value()?.description === recipeDescription()
+        "
+      />
     </div>
   }
 </div>

@@ -33,6 +33,11 @@ body {
   //Text Editor Styling
   --p-editor-toolbar-background: transparent !important;
   --p-editor-content-background: transparent !important;
+
+  //Toast style on mobile
+  @media(max-width: 745px) {
+    --p-toast-width: 70% !important;
+  }
 }
 
 .p-editor-container {

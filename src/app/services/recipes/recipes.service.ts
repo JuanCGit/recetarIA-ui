@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RecipesService {
+  #recipesUrl = `${environment.apiUrl}/recipes/`;
   #http = inject(HttpClient);
 
   generatedRecipe = signal<IAIRecipe | undefined>(undefined);
@@ -25,16 +26,19 @@ export class RecipesService {
   }
 
   getRecipe(recipeId?: number): Observable<IRecipe> {
-    return this.#http.get<IRecipe>(
-      `${environment.apiUrl}/recipes/${recipeId ?? 0}`,
-    );
+    return this.#http.get<IRecipe>(`${this.#recipesUrl}${recipeId ?? 0}`);
   }
 
   getRecipes(): Observable<IRecipe[]> {
-    return this.#http.get<IRecipe[]>(`${environment.apiUrl}/recipes/`);
+    return this.#http.get<IRecipe[]>(this.#recipesUrl);
   }
 
   createRecipe(recipe: ICreateRecipe): Observable<IRecipe> {
-    return this.#http.post<IRecipe>(`${environment.apiUrl}/recipes/`, recipe);
+    return this.#http.post<IRecipe>(this.#recipesUrl, recipe);
+  }
+
+  editRecipe(editedRecipe: IRecipe) {
+    const editedRecipeUrl = `${this.#recipesUrl}${editedRecipe.id}`;
+    return this.#http.put<IRecipe>(editedRecipeUrl, editedRecipe);
   }
 }

@@ -41,4 +41,9 @@ export class RecipesService {
     const editedRecipeUrl = `${this.#recipesUrl}${editedRecipe.id}`;
     return this.#http.put<IRecipe>(editedRecipeUrl, editedRecipe);
   }
+
+  deleteRecipe(deleteRecipeId: number) {
+    const deletedRecipeUrl = `${this.#recipesUrl}${deleteRecipeId}`;
+    return this.#http.delete<void>(deletedRecipeUrl);
+  }
 }

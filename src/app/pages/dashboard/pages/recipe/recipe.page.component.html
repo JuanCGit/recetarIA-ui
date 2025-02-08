@@ -16,7 +16,7 @@
           [class.highlight]="isEditing()"
           (click)="isEditing.set(!isEditing())"
         ></i>
-        <i class="pi pi-trash"></i>
+        <i class="pi pi-trash" (click)="deleteRecipe()"></i>
       }
     </div>
   </div>
@@ -33,7 +33,7 @@
   </div>
 
   @if (isEditing()) {
-    <div class="recipe-container__actions">
+    <div class="recipe-container__buttons">
       <p-button
         [label]="'Guardar receta'"
         (click)="editRecipe()"

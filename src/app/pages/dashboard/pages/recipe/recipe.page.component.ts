@@ -15,7 +15,8 @@ import { firstValueFrom } from 'rxjs';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { IRecipe } from '../../../../interfaces/recipes.interfaces';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe',
@@ -28,6 +29,8 @@ export class RecipePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #recipesService = inject(RecipesService);
   #toastService = inject(MessageService);
+  #confirmationService = inject(ConfirmationService);
+  #router = inject(Router);
 
   recipeId = input<number | undefined>(undefined);
   recipeResource = resource({
@@ -54,8 +57,6 @@ export class RecipePageComponent {
       .subscribe((recipe) => {
         this.recipeName.set(recipe.name);
         this.recipeDescription.set(recipe.description);
-        console.log(recipe, 'HOLA');
-
         this.isAuthor.set(recipe.isAuthor);
         this.isEditing.set(false);
         this.#toastService.add({
@@ -66,5 +67,30 @@ export class RecipePageComponent {
           life: 2000,
         });
       });
+  }
+
+  deleteRecipe() {
+    this.#confirmationService.confirm({
+      message: '¿Deseas eliminar la receta?',
+      header: 'Eliminar receta',
+      icon: 'pi pi-trash',
+      acceptLabel: 'Eliminar',
+      rejectLabel: 'Cancelar',
+      acceptButtonStyleClass: 'delete-btn',
+      accept: () => {
+        this.#recipesService
+          .deleteRecipe(Number(this.recipeId()))
+          .subscribe(() => {
+            this.#router.navigateByUrl('/library');
+            this.#toastService.add({
+              summary: 'Recipe deleted',
+              detail: 'The recipe has been deleted successfully',
+              severity: 'success',
+              closable: false,
+              life: 2000,
+            });
+          });
+      },
+    });
   }
 }

@@ -6,6 +6,7 @@
   --dark-bg: #212121;
   --dark-bg-hover: #292929;
   --dark-border: #71717a;
+  --delete: var(--p-red-500);
 }
 
 html,
@@ -37,6 +38,13 @@ body {
   //Toast style on mobile
   @media(max-width: 745px) {
     --p-toast-width: 70% !important;
+  }
+
+  .delete-btn {
+    --p-button-primary-hover-background: var(--delete);
+    --p-button-primary-hover-border-color: var(--delete);
+    --p-button-primary-active-background: var(--delete);
+    --p-button-primary-active-border-color: var(--delete);
   }
 }
 

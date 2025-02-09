@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { loaderInterceptor } from './interceptors/loader.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +20,7 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, loaderInterceptor])),
     provideAnimations(),
   ],
 };

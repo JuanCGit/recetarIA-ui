@@ -1,11 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import {
-  IAIRecipe,
-  ICreateRecipe,
-  IRecipe,
-} from '../../interfaces/recipes.interfaces';
+import { BaseRecipeInterface, RecipeInterface } from '../../interfaces/recipes.interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -15,31 +11,31 @@ export class RecipesService {
   #recipesUrl = `${environment.apiUrl}/recipes/`;
   #http = inject(HttpClient);
 
-  generatedRecipe = signal<IAIRecipe | undefined>(undefined);
+  generatedRecipe = signal<BaseRecipeInterface | undefined>(undefined);
 
-  generateRecipe(ingredients: string[]): Observable<IAIRecipe> {
+  generateRecipe(ingredients: string[]): Observable<BaseRecipeInterface> {
     const mockList = ingredients.map((ingredient) => `<li>${ingredient}</li>`);
     return of({
       name: 'Macarrones',
-      recipe: `<h1>Recipe Generated:</h1><ul>${mockList.join('')}</ul>`,
+      description: `<h1>Recipe Generated:</h1><ul>${mockList.join('')}</ul>`,
     });
   }
 
-  getRecipe(recipeId?: number): Observable<IRecipe> {
-    return this.#http.get<IRecipe>(`${this.#recipesUrl}${recipeId ?? 0}`);
+  getRecipe(recipeId?: number): Observable<RecipeInterface> {
+    return this.#http.get<RecipeInterface>(`${this.#recipesUrl}${recipeId ?? 0}`);
   }
 
-  getRecipes(): Observable<IRecipe[]> {
-    return this.#http.get<IRecipe[]>(this.#recipesUrl);
+  getRecipes(): Observable<RecipeInterface[]> {
+    return this.#http.get<RecipeInterface[]>(this.#recipesUrl);
   }
 
-  createRecipe(recipe: ICreateRecipe): Observable<IRecipe> {
-    return this.#http.post<IRecipe>(this.#recipesUrl, recipe);
+  createRecipe(recipe: BaseRecipeInterface): Observable<RecipeInterface> {
+    return this.#http.post<RecipeInterface>(this.#recipesUrl, recipe);
   }
 
-  editRecipe(editedRecipe: IRecipe) {
+  editRecipe(editedRecipe: RecipeInterface) {
     const editedRecipeUrl = `${this.#recipesUrl}${editedRecipe.id}`;
-    return this.#http.put<IRecipe>(editedRecipeUrl, editedRecipe);
+    return this.#http.put<RecipeInterface>(editedRecipeUrl, editedRecipe);
   }
 
   deleteRecipe(deleteRecipeId: number) {

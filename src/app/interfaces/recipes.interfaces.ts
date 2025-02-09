@@ -1,4 +1,4 @@
-export interface IRecipe {
+export interface RecipeInterface {
   id: number;
   name: string;
   description: string;
@@ -6,12 +6,7 @@ export interface IRecipe {
   isAuthor: boolean;
 }
 
-export interface IAIRecipe {
-  name: string;
-  recipe: string;
-}
-
-export interface ICreateRecipe {
+export interface BaseRecipeInterface {
   name: string;
   description: string;
 }

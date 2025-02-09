@@ -1,6 +1,5 @@
 import {
   Component,
-  computed,
   input,
   linkedSignal,
   resource,
@@ -14,7 +13,7 @@ import { CustomInputComponent } from '../../../../components/custom-input/custom
 import { firstValueFrom } from 'rxjs';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
-import { IRecipe } from '../../../../interfaces/recipes.interfaces';
+import { RecipeInterface } from '../../../../interfaces/recipes.interfaces';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
@@ -53,7 +52,7 @@ export class RecipePageComponent {
         ...this.recipeResource.value(),
         name: this.recipeName(),
         description: this.recipeDescription(),
-      } as IRecipe)
+      } as RecipeInterface)
       .subscribe((recipe) => {
         this.recipeName.set(recipe.name);
         this.recipeDescription.set(recipe.description);

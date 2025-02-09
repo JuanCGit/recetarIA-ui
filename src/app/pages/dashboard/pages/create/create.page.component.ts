@@ -25,7 +25,7 @@ export class CreatePageComponent {
     () => this.#recipesService.generatedRecipe()?.name ?? '',
   );
   recipeDescription = linkedSignal(
-    () => this.#recipesService.generatedRecipe()?.recipe ?? '',
+    () => this.#recipesService.generatedRecipe()?.description ?? '',
   );
 
   createRecipe() {

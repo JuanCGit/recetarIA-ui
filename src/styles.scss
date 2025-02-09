@@ -46,6 +46,10 @@ body {
     --p-button-primary-active-background: var(--delete);
     --p-button-primary-active-border-color: var(--delete);
   }
+
+  .ql-editor ol li:before {
+    content: '•';
+  }
 }
 
 .p-editor-container {

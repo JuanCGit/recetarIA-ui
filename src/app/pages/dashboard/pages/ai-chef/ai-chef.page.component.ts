@@ -6,6 +6,7 @@ import { IngredientList } from './components/ingredient-list/ingredient-list';
 import { Router } from '@angular/router';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
+import { AIService } from '../../../../services/ai/ai.service';
 
 @Component({
   selector: 'app-ai-chef',
@@ -24,6 +25,7 @@ export class AiChefPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #router = inject(Router);
   #recipesService = inject(RecipesService);
+  #aiService = inject(AIService);
 
   writeIngredients = signal<boolean>(true);
   hoverUploader = signal<boolean>(false);
@@ -39,7 +41,7 @@ export class AiChefPageComponent {
   }
 
   generateRecipe() {
-    this.#recipesService
+    this.#aiService
       .generateRecipe(this.ingredients().map((control) => control.value))
       .subscribe((resp) => {
         this.#recipesService.generatedRecipe.set(resp);

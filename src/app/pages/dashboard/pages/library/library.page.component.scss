@@ -42,6 +42,10 @@
 
     &.mobile {
       justify-items: center;
+
+      .cards__recipe {
+        text-align: center;
+      }
     }
 
     &__recipe {

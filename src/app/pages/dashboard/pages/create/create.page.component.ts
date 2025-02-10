@@ -1,4 +1,11 @@
-import { Component, computed, inject, linkedSignal } from '@angular/core';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  linkedSignal,
+  OnDestroy,
+} from '@angular/core';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
 import { Editor } from 'primeng/editor';
@@ -15,7 +22,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [Button, CustomInputComponent, Editor, FileUpload, FormsModule],
 })
-export class CreatePageComponent {
+export class CreatePageComponent implements OnDestroy {
   protected readonly screenSize = inject(ScreenSizeService);
   #recipesService = inject(RecipesService);
   #router = inject(Router);
@@ -28,12 +35,18 @@ export class CreatePageComponent {
     () => this.#recipesService.generatedRecipe()?.description ?? '',
   );
 
+  ngOnDestroy() {
+    this.#recipesService.generatedRecipe.set(undefined);
+  }
+
   createRecipe() {
     this.#recipesService
       .createRecipe({
         name: this.recipeName(),
         description: this.recipeDescription(),
       })
-      .subscribe((recipe) => this.#router.navigate(['/library/', recipe.id]));
+      .subscribe((recipe) => {
+        this.#router.navigate(['/library/', recipe.id]);
+      });
   }
 }

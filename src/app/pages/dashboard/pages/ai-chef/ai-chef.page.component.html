@@ -30,7 +30,11 @@
             [customLabel]="'Ingrediente'"
             (enterTriggered)="addIngredient()"
           />
-          <p-button label="Añadir" (click)="addIngredient()" />
+          <p-button
+            label="Añadir"
+            (click)="addIngredient()"
+            [disabled]="!ingredientInput().length"
+          />
         </div>
         <app-ingredient-list [ingredients]="ingredients" />
       </div>

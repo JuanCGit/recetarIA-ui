@@ -3,8 +3,8 @@
     id="over_label"
     type="text"
     pInputText
-    (keydown.enter)="enterTriggered.emit()"
+    (keydown.enter)="customNgModel().length && enterTriggered.emit()"
     [(ngModel)]="customNgModel"
   />
-  <label [for]="'on_label'">{{ customLabel }}</label>
+  <label [for]="'on_label'">{{ customLabel() }}</label>
 </p-floatlabel>

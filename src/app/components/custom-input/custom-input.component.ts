@@ -1,7 +1,17 @@
-import {Component, EventEmitter, Input, Output, signal, WritableSignal} from '@angular/core';
-import {FloatLabel} from 'primeng/floatlabel';
-import {InputText} from 'primeng/inputtext';
-import {FormsModule} from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  input,
+  Input,
+  InputSignal,
+  output,
+  Output,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { FloatLabel } from 'primeng/floatlabel';
+import { InputText } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input',
@@ -12,6 +22,6 @@ import {FormsModule} from '@angular/forms';
 })
 export class CustomInputComponent {
   @Input() customNgModel: WritableSignal<string> = signal('');
-  @Input() customLabel: string = '';
-  @Output() enterTriggered: EventEmitter<void> = new EventEmitter();
+  customLabel = input('');
+  enterTriggered = output();
 }

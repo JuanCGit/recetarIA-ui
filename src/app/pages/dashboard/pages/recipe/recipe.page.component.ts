@@ -5,6 +5,7 @@ import {
   resource,
   signal,
   inject,
+  computed,
 } from '@angular/core';
 import { Editor } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +43,14 @@ export class RecipePageComponent {
   recipeDescription = linkedSignal(
     () => this.recipeResource.value()?.description ?? '',
   );
+  descriptionNotChanged = computed(() => {
+    return (
+      this.recipeDescription().replace(/(\s*&nbsp;\s*|\s*\n\s*|\s+)/g, '') ===
+      this.recipeResource
+        .value()
+        ?.description.replace(/(\s*&nbsp;\s*|\s*\n\s*|\s+)/g, '')
+    );
+  });
   isAuthor = linkedSignal(() => this.recipeResource.value()?.isAuthor ?? '');
   isEditing = signal<boolean>(false);
 

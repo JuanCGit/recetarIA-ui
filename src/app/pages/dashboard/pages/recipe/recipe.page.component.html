@@ -33,14 +33,18 @@
   </div>
 
   @if (isEditing()) {
+    @let recipeNotChanged =
+      recipeResource.value()?.name === recipeName() && descriptionNotChanged();
+    @let isRecipeEmpty =
+      !recipeName().length ||
+      recipeDescription() === "<p></p>" ||
+      recipeDescription() === "<h2></h2>" ||
+      recipeDescription() === "<h1></h1>";
     <div class="recipe-container__buttons">
       <p-button
         [label]="'Guardar receta'"
         (click)="editRecipe()"
-        [disabled]="
-          recipeResource.value()?.name === recipeName() &&
-          recipeResource.value()?.description === recipeDescription()
-        "
+        [disabled]="recipeNotChanged || isRecipeEmpty"
       />
     </div>
   }

@@ -1,7 +1,12 @@
 <div class="menu" [class.mobile]="isMobile">
-  @for(item of menuItems; track $index) {
+  @for (item of menuItems; track $index) {
     <img
-      [src]="imagePath + (itemActive.isActive || menuItems[$index].hover ? item.activeSrc : item.inactiveSrc)"
+      [src]="
+        imagePath +
+        (itemActive.isActive || menuItems[$index].hover
+          ? item.activeSrc
+          : item.inactiveSrc)
+      "
       [routerLink]="item.link"
       [alt]="item.alt"
       [routerLinkActive]="item.routerLinkActive"
@@ -10,4 +15,21 @@
       (mouseleave)="menuItems[$index].hover = false"
     />
   }
+  <div class="user">
+    <img
+      [src]="
+        imagePath +
+        (itemActive.isActive || hoverUser
+          ? 'active-circle.svg'
+          : 'circle.svg')
+      "
+      routerLink="profile"
+      alt="Profile"
+      routerLinkActive="profile"
+      #itemActive="routerLinkActive"
+      (mouseenter)="hoverUser = true"
+      (mouseleave)="hoverUser = false"
+    />
+    <span>J</span>
+  </div>
 </div>

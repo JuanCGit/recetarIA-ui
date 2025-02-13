@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {AvatarModule} from 'primeng/avatar';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, AvatarModule],
 })
 export class MenuComponent {
   @Input() isMobile: boolean = false;
@@ -40,5 +41,6 @@ export class MenuComponent {
       hover: false
     }
   ];
+  hoverUser = false;
 
 }

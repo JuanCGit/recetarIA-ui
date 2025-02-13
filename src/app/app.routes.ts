@@ -37,6 +37,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'profile',
+        loadComponent: () =>
+          import('./pages/dashboard/pages/profile/profile.page.component').then(
+            (c) => c.ProfilePageComponent,
+          ),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'ai-chef',

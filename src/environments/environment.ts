@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://apirecetaria.casanovajuan.com',
+  apiUrl: 'http://localhost:8080',
 };

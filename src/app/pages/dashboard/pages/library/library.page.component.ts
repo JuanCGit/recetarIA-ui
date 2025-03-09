@@ -2,8 +2,6 @@ import {
   Component,
   computed,
   inject,
-  linkedSignal,
-  resource,
   signal,
 } from '@angular/core';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
@@ -28,7 +26,6 @@ export class LibraryPageComponent {
       return this.#recipesService.getRecipes();
     },
   });
-  recipesCount = computed(() => this.recipesResource.value()?.length ?? 0);
   recipesInput = signal<string>('');
   filteredRecipes = computed(() => {
     return (this.recipesResource.value() ?? []).filter((recipe) =>

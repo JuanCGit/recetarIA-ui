@@ -95,7 +95,7 @@ export class RecipePageComponent {
               detail: 'The recipe has been deleted successfully',
               severity: 'success',
               closable: false,
-              life: 2000,
+              life: 1000,
             });
           });
       },

@@ -47,6 +47,7 @@ export class AIService {
           return {
             name: resp.title,
             description,
+            summary: resp.summary
           };
         }),
       );

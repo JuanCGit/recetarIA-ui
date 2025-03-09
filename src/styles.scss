@@ -3,6 +3,7 @@
 
 :root {
   --snow-white: #f9fdfe;
+  --dark-color: #212121;
   --dark-bg: #212121;
   --dark-bg-hover: #292929;
   --dark-border: #71717a;
@@ -19,6 +20,8 @@ body {
   font-style: normal;
   //Input styling
   --p-inputtext-background: transparent !important;
+  //Text-Area styling
+  --p-textarea-background: var(--dark-bg) !important;
   //Button styling
   --p-button-primary-color: var(--dark-bg) !important;
   --p-button-primary-background: var(--snow-white) !important;
@@ -34,6 +37,9 @@ body {
   //Text Editor Styling
   --p-editor-toolbar-background: transparent !important;
   --p-editor-content-background: transparent !important;
+  .ql-editor.ql-blank::before {
+    color: var(--p-surface-400) !important;
+  }
 
   //Toast style on mobile
   @media(max-width: 745px) {

@@ -26,6 +26,12 @@
           />
         }
       </div>
+      <div class="create-container__summary">
+        <p-floatlabel variant="on">
+          <textarea pTextarea id="on_label" [(ngModel)]="recipeSummary" style="resize: none"></textarea>
+          <label for="on_label">Descripción de la receta</label>
+        </p-floatlabel>
+      </div>
       @if (screenSize.isMobile()) {
         <p-fileupload
           class="file-upload--mobile"
@@ -38,7 +44,7 @@
           chooseLabel="Imagen de la receta"
         />
       }
-      <p-editor [(ngModel)]="recipeDescription"></p-editor>
+      <p-editor [(ngModel)]="recipeDescription" placeholder="Escribe aquí tu receta"></p-editor>
     </div>
   </div>
 

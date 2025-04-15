@@ -33,7 +33,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     width: 100%;
     height: auto;
     gap: 16px;
@@ -49,32 +49,67 @@
     }
 
     &__recipe {
-      padding: 12px;
+      padding: 0.5rem;
       border-radius: 10px;
       width: 100%;
       background-color: var(--snow-white);
+      justify-content: space-between;
       display: flex;
       flex-direction: column;
-      gap: 12px;
       cursor: pointer;
       color: var(--dark-bg);
       text-align: left;
       height: 350px;
+      transition: 0.5s;
 
       .cards__title {
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
         font-size: 1.5em;
+        font-weight: 600;
+        text-wrap: wrap;
+        text-align: left;
       }
 
       &:hover {
-        background-color: var(--p-primary-hover-color) !important;
-        .cards__image {
-          border-color: var(--p-primary-hover-color) !important;
+        margin-top: -0.5rem;
+      }
+
+      &-upper {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      &-lower {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+          width: 1.7rem;
+          cursor: pointer;
+        }
+
+        .share:hover {
+          filter: invert(84%) sepia(81%) saturate(480%) hue-rotate(77deg) brightness(88%) contrast(86%);
+        }
+
+        .actions {
+          display: flex;
+          gap: 0.5rem;
+
+          &__delete:hover {
+            filter: invert(45%) sepia(13%) saturate(5493%) hue-rotate(328deg) brightness(94%) contrast(100%);
+          }
+
+          &__edit:hover {
+            filter: invert(84%) sepia(81%) saturate(480%) hue-rotate(77deg) brightness(88%) contrast(86%);
+          }
         }
       }
     }
+
+
 
     &__image {
       width: 100%;
@@ -83,7 +118,7 @@
       background-position: center;
       background-size: cover;
       border: 3px solid var(--snow-white);
-      border-radius: 10px 10px 0 0;
+      border-radius: 15px ;
     }
 
     &--no-results {

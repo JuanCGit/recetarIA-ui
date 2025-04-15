@@ -9,18 +9,38 @@
       <div class="cards" [class.mobile]="screenSize.isMobile()">
         @for (recipe of filteredRecipes(); track recipe.name) {
           <div class="cards__recipe" (click)="navigateToRecipe(recipe.id)">
-            <div
-              class="cards__image"
-              [style.background-image]="
-                'url(https://thispersondoesnotexist.com/)'
-              "
-            ></div>
-            <span class="cards__title">
-              {{ recipe.name }}
-            </span>
-            <span class="cards__summary">
-              {{recipe.summary}}
-            </span>
+            <div class="cards__recipe-upper">
+              <div
+                class="cards__image"
+                [style.background-image]="
+                  'url(https://thispersondoesnotexist.com/)'
+                "
+              ></div>
+              <span class="cards__title">
+                {{ recipe.name | uppercase }}
+              </span>
+            </div>
+
+            <div class="cards__recipe-lower">
+              <img
+                alt="share"
+                class="share"
+                src="assets/icons/share.svg"
+              />
+              <div class="actions">
+                <img
+                  alt="delete"
+                  class="actions__delete"
+                  src="assets/icons/bin.svg"
+                />
+                <img
+                  alt="edit"
+                  class="actions__edit"
+                  src="assets/icons/pen.svg"
+                />
+              </div>
+
+            </div>
           </div>
         }
       </div>

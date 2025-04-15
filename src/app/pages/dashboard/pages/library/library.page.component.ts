@@ -9,13 +9,14 @@ import { Router, RouterLink } from '@angular/router';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { rxResource } from '@angular/core/rxjs-interop';
+import {UpperCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.page.component.html',
   styleUrl: './library.page.component.scss',
   standalone: true,
-  imports: [CustomInputComponent, RouterLink],
+  imports: [CustomInputComponent, RouterLink, UpperCasePipe],
 })
 export class LibraryPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);

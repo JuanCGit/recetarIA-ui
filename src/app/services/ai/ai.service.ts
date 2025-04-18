@@ -5,12 +5,14 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { GeneratedRecipeInterface } from '../../interfaces/ai.interface';
 import { BaseRecipeInterface } from '../../interfaces/recipes.interfaces';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AIService {
   #http = inject(HttpClient);
+  #translate = inject(TranslateService);
 
   generateRecipe(ingredients: string[]): Observable<BaseRecipeInterface> {
     const body = {
@@ -35,11 +37,11 @@ export class AIService {
             .join('');
 
           const description = `
-            <h2>Ingredientes:</h2>
+            <h2>${this.#translate.instant('AI_CHEF.INGREDIENTS')}</h2>
             <p><strong>&nbsp;</strong>&nbsp;</p>
             ${formattedIngredients}
             <h2></h2>
-            <h2>Pasos:</h2>
+            <h2>${this.#translate.instant('AI_CHEF.STEPS')}</h2>
             <p></p>
             ${formattedSteps}
           `;
@@ -47,7 +49,6 @@ export class AIService {
           return {
             name: resp.title,
             description,
-            summary: resp.summary
           };
         }),
       );

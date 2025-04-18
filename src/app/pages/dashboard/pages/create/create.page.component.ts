@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { Router } from '@angular/router';
-import { FloatLabel } from 'primeng/floatlabel';
-import { Textarea } from 'primeng/textarea';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
@@ -28,8 +26,6 @@ import {TranslatePipe} from '@ngx-translate/core';
     Editor,
     FileUpload,
     FormsModule,
-    FloatLabel,
-    Textarea,
     TranslatePipe,
   ],
 })
@@ -45,9 +41,6 @@ export class CreatePageComponent implements OnDestroy {
   recipeDescription = linkedSignal(
     () => this.#recipesService.generatedRecipe()?.description ?? '',
   );
-  recipeSummary = linkedSignal(
-    () => this.#recipesService.generatedRecipe()?.summary ?? '',
-  );
 
   ngOnDestroy() {
     this.#recipesService.generatedRecipe.set(undefined);
@@ -58,7 +51,6 @@ export class CreatePageComponent implements OnDestroy {
       .createRecipe({
         name: this.recipeName(),
         description: this.recipeDescription(),
-        summary: this.recipeSummary(),
       })
       .subscribe((recipe) => {
         this.#router.navigate(['/library/', recipe.id]);

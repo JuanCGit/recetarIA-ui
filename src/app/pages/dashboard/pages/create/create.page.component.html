@@ -26,17 +26,6 @@
           />
         }
       </div>
-      <div class="create-container__summary">
-        <p-floatlabel variant="on">
-          <textarea
-            pTextarea
-            id="on_label"
-            [(ngModel)]="recipeSummary"
-            style="resize: none"
-          ></textarea>
-          <label for="on_label">{{'CREATE.RECIPE_DESCRIPTION' | translate}}</label>
-        </p-floatlabel>
-      </div>
       @if (screenSize.isMobile()) {
         <p-fileupload
           class="file-upload--mobile"

@@ -2,7 +2,6 @@ export interface GeneratedRecipeInterface {
   title: string;
   ingredients: IngredientInterface[];
   steps: StepInterface[];
-  summary: string;
 }
 
 interface IngredientInterface {

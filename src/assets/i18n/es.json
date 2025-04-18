@@ -43,6 +43,8 @@
     "AI": "IA!",
     "INGREDIENT": "Ingrediente",
     "GENERATE": "Generar receta",
-    "ADD_INGREDIENTS": "Añade algún ingrediente"
+    "ADD_INGREDIENTS": "Añade algún ingrediente",
+    "INGREDIENTS": "Ingredientes:",
+    "STEPS": "Pasos:"
   }
 }

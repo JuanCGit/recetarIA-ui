@@ -10,7 +10,8 @@ import { ScreenSizeService } from '../../../../services/screen/screen-size.servi
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import {UpperCasePipe} from '@angular/common';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-library',
@@ -22,7 +23,10 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class LibraryPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #router = inject(Router);
+  #confirmationService = inject(ConfirmationService);
+  #translate = inject(TranslateService);
   #recipesService = inject(RecipesService);
+  #toastService = inject(MessageService);
   recipesResource = rxResource({
     loader: () => {
       return this.#recipesService.getRecipes();
@@ -38,4 +42,31 @@ export class LibraryPageComponent {
   navigateToRecipe(recipeId: number) {
     this.#router.navigate(['library', recipeId]);
   }
+
+  deleteRecipe(recipeId: number, event: MouseEvent) {
+    event.stopPropagation();
+    this.#confirmationService.confirm({
+      message: this.#translate.instant('RECIPE.WANT_TO_DELETE'),
+      header: this.#translate.instant('RECIPE.DELETE'),
+      icon: 'pi pi-trash',
+      acceptLabel: this.#translate.instant('COMMON.DELETE'),
+      rejectLabel: this.#translate.instant('COMMON.CANCEL'),
+      acceptButtonStyleClass: 'delete-btn',
+      accept: () => {
+        this.#recipesService
+          .deleteRecipe(recipeId)
+          .subscribe(() => {
+            this.recipesResource.reload();
+            this.#toastService.add({
+              summary: this.#translate.instant('RECIPE.DELETED'),
+              detail: this.#translate.instant('RECIPE.DELETED_SUCCESSFULLY'),
+              severity: 'info',
+              closable: false,
+              life: 1000,
+            });
+          });
+      },
+    });
+  }
+
 }

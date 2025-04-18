@@ -5,6 +5,7 @@ import { Button } from 'primeng/button';
 import { Select } from 'primeng/select';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import {ScreenSizeService} from '../../../../services/screen/screen-size.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./profile.page.component.scss'],
 })
 export class ProfilePageComponent {
+  protected readonly screenSize = inject(ScreenSizeService);
   #translate = inject(TranslateService);
 
   selectedLanguage = signal<string>(

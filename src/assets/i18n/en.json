@@ -6,7 +6,9 @@
     "YOUR": "your",
     "RECIPE": "recipe",
     "WRITE": "Write",
-    "ADD": "Add"
+    "ADD": "Add",
+    "DELETE": "Delete",
+    "CANCEL": "Cancel"
   },
   "PROFILE": {
     "NICK": "Username:",
@@ -21,13 +23,19 @@
   },
   "RECIPE": {
     "NAME": "Recipe name",
-    "SAVE": "Save recipe"
+    "SAVE": "Save recipe",
+    "WANT_TO_DELETE": "Do you want to delete recipe?",
+    "DELETE": "Delete recipe",
+    "DELETED": "Recipe deleted",
+    "DELETED_SUCCESSFULLY": "Recipe successfully deleted",
+    "EDITED": "Recipe edited",
+    "EDITED_SUCCESSFULLY": "Recipe successfully edited"
   },
   "LIBRARY": {
     "SEARCH_RECIPE": "Search recipe",
     "RECIPES": "Recipes!",
     "NO_RECIPES_FOUND": ":( No recipes found with that name,",
-    "NO_RECIPES": ":( You don’t have any recipes yet, generate one",
+    "NO_RECIPES": ":( You don't have any recipes yet, generate one",
     "CLEAR_FILTERS": "clear filters",
     "WITH_AI": "with AI",
     "WRITE_YOURS": "write your own"

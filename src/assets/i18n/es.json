@@ -6,7 +6,9 @@
     "YOUR": "tu",
     "RECIPE": "receta",
     "WRITE": "Escribe",
-    "ADD": "Añadir"
+    "ADD": "Añadir",
+    "DELETE": "Eliminar",
+    "CANCEL": "Cancelar"
   },
   "PROFILE": {
     "NICK": "Nombre de usuario:",
@@ -21,7 +23,13 @@
   },
   "RECIPE": {
     "NAME": "Nombre de la receta",
-    "SAVE": "Guardar receta"
+    "SAVE": "Guardar receta",
+    "WANT_TO_DELETE": "¿Quieres eliminar la receta?",
+    "DELETE": "Eliminar receta",
+    "DELETED": "Receta eliminada",
+    "DELETED_SUCCESSFULLY": "Receta eliminada con éxito",
+    "EDITED": "Receta editada",
+    "EDITED_SUCCESSFULLY": "Receta editada con éxito"
   },
   "LIBRARY": {
     "SEARCH_RECIPE": "Buscar receta",

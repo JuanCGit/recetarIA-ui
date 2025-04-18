@@ -6,7 +6,9 @@
     "YOUR": "la teua",
     "RECIPE": "recepta",
     "WRITE": "Escriu",
-    "ADD": "Afegeix"
+    "ADD": "Afegeix",
+    "DELETE": "Eliminar",
+    "CANCEL": "Cancel·lar"
   },
   "PROFILE": {
     "NICK": "Nom d'usuari:",
@@ -21,7 +23,13 @@
   },
   "RECIPE": {
     "NAME": "Nom de la recepta",
-    "SAVE": "Desa la recepta"
+    "SAVE": "Desa la recepta",
+    "WANT_TO_DELETE": "Vols eliminar la recepta?",
+    "DELETE": "Eliminar recepta",
+    "DELETED": "Recepta eliminada",
+    "DELETED_SUCCESSFULLY": "Recepta eliminada amb èxit",
+    "EDITED": "Recepta editada",
+    "EDITED_SUCCESSFULLY": "Recepta editada amb èxit"
   },
   "LIBRARY": {
     "SEARCH_RECIPE": "Cerca recepta",

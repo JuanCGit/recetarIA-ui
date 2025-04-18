@@ -17,7 +17,7 @@ import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { RecipeInterface } from '../../../../interfaces/recipes.interfaces';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recipe',
@@ -28,6 +28,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class RecipePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
+  #translate = inject(TranslateService);
   #recipesService = inject(RecipesService);
   #toastService = inject(MessageService);
   #confirmationService = inject(ConfirmationService);
@@ -69,8 +70,8 @@ export class RecipePageComponent {
         this.isAuthor.set(recipe.isAuthor);
         this.isEditing.set(false);
         this.#toastService.add({
-          summary: 'Recipe edited',
-          detail: 'The recipe has been edited successfully',
+          summary: this.#translate.instant('RECIPE.EDITED'),
+          detail: this.#translate.instant('RECIPE.EDITED_SUCCESSFULLY'),
           severity: 'success',
           closable: false,
           life: 2000,
@@ -80,11 +81,11 @@ export class RecipePageComponent {
 
   deleteRecipe() {
     this.#confirmationService.confirm({
-      message: '¿Deseas eliminar la receta?',
-      header: 'Eliminar receta',
+      message: this.#translate.instant('RECIPE.WANT_TO_DELETE'),
+      header: this.#translate.instant('RECIPE.DELETE'),
       icon: 'pi pi-trash',
-      acceptLabel: 'Eliminar',
-      rejectLabel: 'Cancelar',
+      acceptLabel: this.#translate.instant('COMMON.DELETE'),
+      rejectLabel: this.#translate.instant('COMMON.CANCEL'),
       acceptButtonStyleClass: 'delete-btn',
       accept: () => {
         this.#recipesService
@@ -92,9 +93,9 @@ export class RecipePageComponent {
           .subscribe(() => {
             this.#router.navigateByUrl('/library');
             this.#toastService.add({
-              summary: 'Recipe deleted',
-              detail: 'The recipe has been deleted successfully',
-              severity: 'success',
+              summary: this.#translate.instant('RECIPE.DELETED'),
+              detail: this.#translate.instant('RECIPE.DELETED_SUCCESSFULLY'),
+              severity: 'info',
               closable: false,
               life: 1000,
             });

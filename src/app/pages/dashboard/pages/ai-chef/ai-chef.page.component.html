@@ -1,6 +1,6 @@
 <div class="chef-container" [class.mobile]="screenSize.isMobile()">
   <h1 class="chef-container__title">
-    Crea tu Receta con <span class="highlight">IA!</span>
+    {{ 'AI_CHEF.CREATE' | translate }} <span class="highlight">{{ 'AI_CHEF.AI' | translate }}</span>
   </h1>
   <div class="chef-container__content">
     <!--
@@ -27,11 +27,11 @@
         <div class="chef-container__input">
           <app-custom-input
             [customNgModel]="ingredientInput"
-            [customLabel]="'Ingrediente'"
+            [customLabel]="'AI_CHEF.INGREDIENT' | translate"
             (enterTriggered)="addIngredient()"
           />
           <p-button
-            label="Añadir"
+            [label]="'COMMON.ADD' | translate"
             (click)="addIngredient()"
             [disabled]="!ingredientInput().length"
           />
@@ -44,7 +44,7 @@
   <div class="chef-container__actions">
     <p-button
       [style.visibility]="!ingredients().length ? 'hidden' : 'visible'"
-      [label]="'Generar receta'"
+      [label]="'AI_CHEF.GENERATE' | translate"
       (click)="generateRecipe()"
     />
   </div>

@@ -1,4 +1,4 @@
-import { Component, signal, computed, inject } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Button } from 'primeng/button';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { ScreenSizeService } from '../../../../services/screen/screen-size.service';
 import { AIService } from '../../../../services/ai/ai.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ai-chef',
@@ -19,6 +20,7 @@ import { AIService } from '../../../../services/ai/ai.service';
     Button,
     CustomInputComponent,
     IngredientList,
+    TranslatePipe,
   ],
 })
 export class AiChefPageComponent {

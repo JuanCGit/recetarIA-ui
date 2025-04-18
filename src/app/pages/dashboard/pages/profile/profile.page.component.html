@@ -1,3 +1,27 @@
 <div class="profile">
-  Profile Works ;)
+  <div class="profile__user">
+    <div class="profile__info">
+      <div class="profile__picture">
+        <img
+          src="assets/icons/profile.svg"
+          routerLink="profile"
+          alt="Profile pic drawing"
+        />
+      </div>
+      <p-button>{{ 'PROFILE.CHANGE_IMAGE' | translate }}</p-button>
+    </div>
+  </div>
+  <div class="profile__settings">
+    <div>
+      <h1>{{'PROFILE.NICK' | translate}}</h1>
+      <div class="profile__nick-input">
+        <app-custom-input/>
+        <p-button>{{ 'COMMON.SAVE' | translate }}</p-button>
+      </div>
+    </div>
+    <div class="profile__language-selector">
+      <h1>{{'PROFILE.LANGUAGE' | translate}}</h1>
+      <p-select [options]="availableLanguages()" [(ngModel)]="selectedLanguage" optionValue="id" optionLabel="name"/>
+    </div>
+  </div>
 </div>

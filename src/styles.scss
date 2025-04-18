@@ -18,6 +18,8 @@ body {
   font-family: "Rubik", serif;
   font-optical-sizing: auto;
   font-style: normal;
+  //FormField styling
+  --p-form-field-background: var(--dark-bg) !important;
   //Input styling
   --p-inputtext-background: transparent !important;
   //Text-Area styling

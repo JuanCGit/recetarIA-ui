@@ -1,16 +1,16 @@
 <div class="create-container" [class.mobile]="screenSize.isMobile()">
   <h1 class="create-container__title">
     @if (generatedRecipe()) {
-      Tu receta <span class="highlight">generada</span>
+      {{ 'CREATE.YOUR_RECIPE' | translate }} <span class="highlight">{{ 'CREATE.GENERATED' | translate}}</span>
     } @else {
-      Escribe <span class="highlight">tu</span> receta
+      {{ 'COMMON.WRITE' | translate }} <span class="highlight">{{ 'COMMON.YOUR' | translate }}</span> {{ 'COMMON.RECIPE' | translate }}
     }
   </h1>
   <div class="create-container__content">
     <div class="create-container__recipe">
       <div class="create-container__recipe-header">
         <app-custom-input
-          [customLabel]="'Nombre de la receta'"
+          [customLabel]="'RECIPE.NAME' | translate"
           [customNgModel]="recipeName"
         />
         @if (!screenSize.isMobile()) {
@@ -22,14 +22,19 @@
             accept="image/*"
             maxFileSize="1000000"
             [auto]="true"
-            chooseLabel="Imagen de la receta"
+            [chooseLabel]="'CREATE.RECIPE_IMAGE' | translate"
           />
         }
       </div>
       <div class="create-container__summary">
         <p-floatlabel variant="on">
-          <textarea pTextarea id="on_label" [(ngModel)]="recipeSummary" style="resize: none"></textarea>
-          <label for="on_label">Descripción de la receta</label>
+          <textarea
+            pTextarea
+            id="on_label"
+            [(ngModel)]="recipeSummary"
+            style="resize: none"
+          ></textarea>
+          <label for="on_label">{{'CREATE.RECIPE_DESCRIPTION' | translate}}</label>
         </p-floatlabel>
       </div>
       @if (screenSize.isMobile()) {
@@ -41,14 +46,17 @@
           accept="image/*"
           maxFileSize="1000000"
           [auto]="true"
-          chooseLabel="Imagen de la receta"
+          [chooseLabel]="'CREATE.RECIPE_IMAGE' | translate"
         />
       }
-      <p-editor [(ngModel)]="recipeDescription" placeholder="Escribe aquí tu receta"></p-editor>
+      <p-editor
+        [(ngModel)]="recipeDescription"
+        [placeholder]="'CREATE.WRITE_RECIPE' | translate"
+      />
     </div>
   </div>
 
   <div class="create-container__actions">
-    <p-button [label]="'Guardar receta'" (click)="createRecipe()" />
+    <p-button [label]="'RECIPE.SAVE' | translate" (click)="createRecipe()" />
   </div>
 </div>

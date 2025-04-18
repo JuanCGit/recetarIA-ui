@@ -10,13 +10,14 @@ import { ScreenSizeService } from '../../../../services/screen/screen-size.servi
 import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import {UpperCasePipe} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.page.component.html',
   styleUrl: './library.page.component.scss',
   standalone: true,
-  imports: [CustomInputComponent, RouterLink, UpperCasePipe],
+  imports: [CustomInputComponent, RouterLink, UpperCasePipe, TranslatePipe],
 })
 export class LibraryPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);

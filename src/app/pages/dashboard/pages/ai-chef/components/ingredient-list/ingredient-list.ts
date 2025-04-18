@@ -1,13 +1,14 @@
-import { Component, Input, signal, WritableSignal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.html',
   styleUrl: './ingredient-list.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, InputText],
+  imports: [ReactiveFormsModule, InputText, TranslatePipe],
 })
 export class IngredientList {
   @Input() ingredients = signal<FormControl[]>([]);

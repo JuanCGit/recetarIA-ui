@@ -15,6 +15,7 @@ import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { Router } from '@angular/router';
 import { FloatLabel } from 'primeng/floatlabel';
 import { Textarea } from 'primeng/textarea';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create',
@@ -29,6 +30,7 @@ import { Textarea } from 'primeng/textarea';
     FormsModule,
     FloatLabel,
     Textarea,
+    TranslatePipe,
   ],
 })
 export class CreatePageComponent implements OnDestroy {

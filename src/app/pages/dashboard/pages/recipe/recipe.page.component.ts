@@ -17,13 +17,14 @@ import { RecipesService } from '../../../../services/recipes/recipes.service';
 import { RecipeInterface } from '../../../../interfaces/recipes.interfaces';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.page.component.html',
   styleUrl: './recipe.page.component.scss',
   standalone: true,
-  imports: [Editor, FormsModule, Button, CustomInputComponent],
+  imports: [Editor, FormsModule, Button, CustomInputComponent, TranslatePipe],
 })
 export class RecipePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);

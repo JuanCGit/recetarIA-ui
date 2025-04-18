@@ -1,9 +1,12 @@
 <div class="library" [class.mobile]="screenSize.isMobile()">
-  <h1 class="library__title"><span class="highlight">Mis</span> Recetas!</h1>
+  <h1 class="library__title">
+    <span class="highlight">{{ "COMMON.MY" | translate }}</span>
+    {{ "LIBRARY.RECIPES" | translate }}
+  </h1>
   @if (recipesResource.value()?.length) {
     <app-custom-input
       [customNgModel]="recipesInput"
-      customLabel="Buscar receta"
+      [customLabel]="'LIBRARY.SEARCH_RECIPE' | translate"
     />
     @if (filteredRecipes().length) {
       <div class="cards" [class.mobile]="screenSize.isMobile()">
@@ -22,11 +25,7 @@
             </div>
 
             <div class="cards__recipe-lower">
-              <img
-                alt="share"
-                class="share"
-                src="assets/icons/share.svg"
-              />
+              <img alt="share" class="share" src="assets/icons/share.svg" />
               <div class="actions">
                 <img
                   alt="delete"
@@ -39,7 +38,6 @@
                   src="assets/icons/pen.svg"
                 />
               </div>
-
             </div>
           </div>
         }
@@ -47,9 +45,9 @@
     } @else {
       <div class="cards--no-results">
         <h2>
-          :( No hay recetas con ese nombre,
+          {{ 'LIBRARY.NO_RECIPES_FOUND' | translate }}
           <span class="highlight" (click)="recipesInput.set('')"
-            >borrar filtros</span
+            >{{'LIBRARY.CLEAR_FILTERS' | translate}}</span
           >
         </h2>
       </div>
@@ -57,9 +55,9 @@
   } @else {
     <div class="library__empty">
       <h2>
-        :( Todavía no tienes recetas, genera una
-        <span class="highlight" [routerLink]="'/ai-chef'">con IA</span> o
-        <span class="highlight" [routerLink]="'/create'">escribe la tuya</span>
+        {{ 'LIBRARY.NO_RECIPES' | translate }}
+        <span class="highlight" [routerLink]="'/ai-chef'">{{ 'LIBRARY.WITH_AI' | translate }}</span> {{'COMMON.OR' | translate}}
+        <span class="highlight" [routerLink]="'/create'">{{ 'LIBRARY.WRITE_YOURS' | translate }}</span>
       </h2>
     </div>
   }

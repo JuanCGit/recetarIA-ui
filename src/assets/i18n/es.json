@@ -1,0 +1,48 @@
+{
+  "COMMON": {
+    "SAVE": "Guardar",
+    "MY": "Mis",
+    "OR": "o",
+    "YOUR": "tu",
+    "RECIPE": "receta",
+    "WRITE": "Escribe",
+    "ADD": "Añadir"
+  },
+  "PROFILE": {
+    "NICK": "Nombre de usuario:",
+    "CHANGE_IMAGE": "Cambiar imagen",
+    "LANGUAGE": "Idioma:",
+    "LANGUAGES": {
+      "EN": "Inglés",
+      "ES": "Español",
+      "CA": "Catalán"
+    }
+  },
+  "RECIPE": {
+    "NAME": "Nombre de la receta",
+    "SAVE": "Guardar receta"
+  },
+  "LIBRARY": {
+    "SEARCH_RECIPE": "Buscar receta",
+    "RECIPES": "Recetas!",
+    "NO_RECIPES_FOUND": ":( No hay recetas con ese nombre,",
+    "NO_RECIPES": ":( Todavía no tienes recetas, genera una",
+    "CLEAR_FILTERS": "borrar filtros",
+    "WITH_AI": "con IA",
+    "WRITE_YOURS": "escribe la tuya"
+  },
+  "CREATE": {
+    "WRITE_RECIPE": "Escribe aquí tu receta",
+    "RECIPE_IMAGE": "Imagen de la receta",
+    "RECIPE_DESCRIPTION": "Descripción de la receta",
+    "YOUR_RECIPE": "Tu receta",
+    "GENERATED": "generada"
+  },
+  "AI_CHEF": {
+    "CREATE": "Crea tu Receta con ",
+    "AI": "IA!",
+    "INGREDIENT": "Ingrediente",
+    "GENERATE": "Generar receta",
+    "ADD_INGREDIENTS": "Añade algún ingrediente"
+  }
+}

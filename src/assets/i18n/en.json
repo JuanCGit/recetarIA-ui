@@ -1,0 +1,48 @@
+{
+  "COMMON": {
+    "SAVE": "Save",
+    "MY": "My",
+    "OR": "or",
+    "YOUR": "your",
+    "RECIPE": "recipe",
+    "WRITE": "Write",
+    "ADD": "Add"
+  },
+  "PROFILE": {
+    "NICK": "Username:",
+    "CHANGE_IMAGE": "Change image",
+    "LANGUAGE": "Language:",
+    "LANGUAGES": {
+      "EN": "English",
+      "ES": "Spanish",
+      "CA": "Catalan"
+    }
+  },
+  "RECIPE": {
+    "NAME": "Recipe name",
+    "SAVE": "Save recipe"
+  },
+  "LIBRARY": {
+    "SEARCH_RECIPE": "Search recipe",
+    "RECIPES": "Recipes!",
+    "NO_RECIPES_FOUND": ":( No recipes found with that name,",
+    "NO_RECIPES": ":( You don’t have any recipes yet, generate one",
+    "CLEAR_FILTERS": "clear filters",
+    "WITH_AI": "with AI",
+    "WRITE_YOURS": "write your own"
+  },
+  "CREATE": {
+    "WRITE_RECIPE": "Write your recipe here",
+    "RECIPE_IMAGE": "Recipe image",
+    "RECIPE_DESCRIPTION": "Recipe description",
+    "YOUR_RECIPE": "Your recipe",
+    "GENERATED": "generated"
+  },
+  "AI_CHEF": {
+    "CREATE": "Create your recipe with ",
+    "AI": "AI!",
+    "INGREDIENT": "Ingredient",
+    "GENERATE": "Generate recipe",
+    "ADD_INGREDIENTS": "Add some ingredients"
+  }
+}

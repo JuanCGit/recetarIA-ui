@@ -1,0 +1,48 @@
+{
+  "COMMON": {
+    "SAVE": "Desa",
+    "MY": "Les meues",
+    "OR": "o",
+    "YOUR": "la teua",
+    "RECIPE": "recepta",
+    "WRITE": "Escriu",
+    "ADD": "Afegeix"
+  },
+  "PROFILE": {
+    "NICK": "Nom d'usuari:",
+    "CHANGE_IMAGE": "Canvia la imatge",
+    "LANGUAGE": "Idioma:",
+    "LANGUAGES": {
+      "EN": "Anglès",
+      "ES": "Castellà",
+      "CA": "Català"
+    }
+  },
+  "RECIPE": {
+    "NAME": "Nom de la recepta",
+    "SAVE": "Desa la recepta"
+  },
+  "LIBRARY": {
+    "SEARCH_RECIPE": "Cerca recepta",
+    "RECIPES": "Receptes!",
+    "NO_RECIPES_FOUND": ":( No s'ha trobat cap recepta amb aquest nom,",
+    "NO_RECIPES": ":( Encara no tens receptes, genera’n una",
+    "CLEAR_FILTERS": "esborra filtres",
+    "WITH_AI": "amb IA",
+    "WRITE_YOURS": "escriu la teua"
+  },
+  "CREATE": {
+    "WRITE_RECIPE": "Escriu aquí la teua recepta",
+    "RECIPE_IMAGE": "Imatge de la recepta",
+    "RECIPE_DESCRIPTION": "Descripció de la recepta",
+    "YOUR_RECIPE": "La teua recepta",
+    "GENERATED": "generada"
+  },
+  "AI_CHEF": {
+    "CREATE": "Crea la teua recepta amb ",
+    "AI": "IA!",
+    "INGREDIENT": "Ingredient",
+    "GENERATE": "Genera recepta",
+    "ADD_INGREDIENTS": "Afegeix algun ingredient"
+  }
+}

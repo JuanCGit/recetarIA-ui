@@ -2,7 +2,7 @@
   <div class="recipe-container__header">
     @if (isEditing()) {
       <app-custom-input
-        [customLabel]="'Nombre de la receta'"
+        [customLabel]="'RECIPE.NAME' | translate"
         [customNgModel]="recipeName"
       />
     } @else {
@@ -27,8 +27,7 @@
         [(ngModel)]="recipeDescription"
         [readonly]="!isEditing()"
         [class.remove-header]="!isEditing()"
-      >
-      </p-editor>
+      />
     </div>
   </div>
 
@@ -42,7 +41,7 @@
       recipeDescription() === "<h1></h1>";
     <div class="recipe-container__buttons">
       <p-button
-        [label]="'Guardar receta'"
+        [label]="'RECIPE.SAVE' | translate"
         (click)="editRecipe()"
         [disabled]="recipeNotChanged || isRecipeEmpty"
       />

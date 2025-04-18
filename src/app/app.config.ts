@@ -28,7 +28,7 @@ import { localeInterceptor } from './interceptors/locale.interceptor';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
   http: HttpClient,
-) => new TranslateHttpLoader(http, './i18n/', '.json');
+) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom([
@@ -59,7 +59,7 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       const translate = inject(TranslateService);
       translate.setDefaultLang('en');
-      translate.use(translate.getBrowserLang() ?? 'en');
+      translate.use(localStorage.getItem('lang') ?? translate.getBrowserLang() ?? 'en');
       localStorage.setItem('lang', translate.currentLang);
     }),
   ],

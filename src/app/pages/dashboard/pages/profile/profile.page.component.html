@@ -12,16 +12,18 @@
     </div>
   </div>
   <div class="profile__settings">
-    <div>
-      <h1>{{'PROFILE.NICK' | translate}}</h1>
+    <div class="profile__language-selector">
+      <span>{{'PROFILE.LANGUAGE' | translate}}</span>
+      <p-select [tooltipPosition]="screenSize.isMobile() ? 'top' : 'bottom'" [options]="availableLanguages()" [(ngModel)]="selectedLanguage" optionValue="id" optionLabel="name"/>
+    </div>
+    <div class="profile__nick">
+      <span>{{'PROFILE.NICK' | translate}}</span>
       <div class="profile__nick-input">
-        <app-custom-input/>
-        <p-button>{{ 'COMMON.SAVE' | translate }}</p-button>
+        <app-custom-input [customNgModel]="username" />
+        <p-button [disabled]="user()?.username === username()" (click)="authService.updateUserName(username()).subscribe()">{{ 'COMMON.SAVE' | translate }}</p-button>
       </div>
     </div>
-    <div class="profile__language-selector">
-      <h1>{{'PROFILE.LANGUAGE' | translate}}</h1>
-      <p-select [options]="availableLanguages()" [(ngModel)]="selectedLanguage" optionValue="id" optionLabel="name"/>
-    </div>
+
+    <p-button severity="danger" (click)="authService.logout()">Cerrar sesión</p-button>
   </div>
 </div>

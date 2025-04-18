@@ -46,6 +46,10 @@
     align-items: center;
     gap: 3rem;
 
+    & span {
+      font-size: 2em;
+    }
+
     & > div {
       width: 100%;
       max-width: 450px;
@@ -53,9 +57,18 @@
   }
 
   &__language-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     p-select {
       width: 100%;
     }
+  }
+
+  &__nick {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   &__nick-input {

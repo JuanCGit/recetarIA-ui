@@ -1,4 +1,4 @@
-import {Component, computed, effect, inject, signal} from '@angular/core';
+import {Component, computed, effect, inject, linkedSignal, signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Button } from 'primeng/button';
@@ -6,6 +6,8 @@ import { Select } from 'primeng/select';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {ScreenSizeService} from '../../../../services/screen/screen-size.service';
+import {AuthService} from '../../../../services/auth/auth.service';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +26,10 @@ import {ScreenSizeService} from '../../../../services/screen/screen-size.service
 export class ProfilePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
   #translate = inject(TranslateService);
+  authService = inject(AuthService);
+
+  user = toSignal(this.authService.getUser());
+  username = linkedSignal(() => this.user()?.username ?? '');
 
   selectedLanguage = signal<string>(
     localStorage.getItem('lang') ?? this.#translate.getBrowserLang() ?? 'en'

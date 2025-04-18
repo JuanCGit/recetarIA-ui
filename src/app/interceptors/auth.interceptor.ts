@@ -2,11 +2,9 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { catchError, map, switchMap, take, throwError } from 'rxjs';
-import { Router } from '@angular/router';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  const router = inject(Router);
 
   return authService.token$.pipe(
     take(1),
@@ -18,8 +16,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     switchMap((request) => next(request)),
     catchError((error) => {
       if (error.status === 401) {
-        authService.clearToken();
-        router.navigate(['/login']);
+        authService.logout();
       }
 
       return throwError(() => error);

@@ -16,7 +16,8 @@
       "EN": "Anglès",
       "ES": "Castellà",
       "CA": "Català"
-    }
+    },
+    "LOGOUT": "Tancar sessió"
   },
   "RECIPE": {
     "NAME": "Nom de la recepta",

@@ -16,7 +16,8 @@
       "EN": "Inglés",
       "ES": "Español",
       "CA": "Catalán"
-    }
+    },
+    "LOGOUT": "Cerrar sesión"
   },
   "RECIPE": {
     "NAME": "Nombre de la receta",

@@ -9,12 +9,14 @@ import {
   TokenInterface,
   UserInterface,
 } from '../../interfaces/auth.interface';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   #http = inject(HttpClient);
+  #router = inject(Router);
 
   #token = new BehaviorSubject<string | undefined>(
     localStorage.getItem('token') || undefined,
@@ -54,5 +56,17 @@ export class AuthService {
   clearToken() {
     localStorage.removeItem('token');
     this.#token.next(undefined);
+  }
+
+  updateUserName(username: string) {
+    return this.#http.put<UserInterface>(
+      `${environment.apiUrl}/auth/update-username`,
+      { username },
+    );
+  }
+
+  logout() {
+    this.clearToken();
+    this.#router.navigate(['/login']);
   }
 }

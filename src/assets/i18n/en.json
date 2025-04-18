@@ -16,7 +16,8 @@
       "EN": "English",
       "ES": "Spanish",
       "CA": "Catalan"
-    }
+    },
+    "LOGOUT": "Logout"
   },
   "RECIPE": {
     "NAME": "Recipe name",

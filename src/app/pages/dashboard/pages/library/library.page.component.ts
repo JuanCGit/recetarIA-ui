@@ -43,6 +43,11 @@ export class LibraryPageComponent {
     this.#router.navigate(['library', recipeId]);
   }
 
+  navigateToEditRecipe(recipeId: number, event: MouseEvent) {
+    event.stopPropagation();
+    this.#router.navigate(['library', recipeId], {queryParams: {editing: true}});
+  }
+
   deleteRecipe(recipeId: number, event: MouseEvent) {
     event.stopPropagation();
     this.#confirmationService.confirm({

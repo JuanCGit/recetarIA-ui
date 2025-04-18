@@ -3,7 +3,6 @@ import {
   input,
   linkedSignal,
   resource,
-  signal,
   inject,
   computed,
 } from '@angular/core';
@@ -35,6 +34,7 @@ export class RecipePageComponent {
   #router = inject(Router);
 
   recipeId = input<number | undefined>(undefined);
+  editing = input<boolean>(false);
   recipeResource = resource({
     request: () => ({ recipeId: this.recipeId() }),
     loader: async ({ request }) => {
@@ -54,7 +54,7 @@ export class RecipePageComponent {
     );
   });
   isAuthor = linkedSignal(() => this.recipeResource.value()?.isAuthor ?? '');
-  isEditing = signal<boolean>(false);
+  isEditing = linkedSignal<boolean>(() => this.editing());
 
   editRecipe() {
     if (!this.recipeResource.value()) return;

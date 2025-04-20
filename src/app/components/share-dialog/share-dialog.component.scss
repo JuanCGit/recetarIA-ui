@@ -1,0 +1,67 @@
+section {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  align-self: start;
+  margin: 0 0 20px 10px;
+}
+button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: #000;
+
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 2rem;
+  background: #fff;
+}
+svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.share {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.share button,
+.share a {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 64px;
+  width: 64px;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 0;
+  color: #000;
+  cursor: pointer;
+  background: #fff;
+  transition: all 150ms ease-in-out;
+  border: 2px solid #000;
+}
+.share button:hover,
+.share button:focus,
+.share a:hover,
+.share a:focus {
+  background: var(--p-primary-color);
+}
+.share button:hover svg,
+.share button:focus svg,
+.share a:hover svg,
+.share a:focus svg {
+  color: #fff;
+  fill: #fff;
+}

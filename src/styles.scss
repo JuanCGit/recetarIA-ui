@@ -42,6 +42,8 @@ body {
   .ql-editor.ql-blank::before {
     color: var(--p-surface-400) !important;
   }
+  //P-Dialog styling
+  --p-dialog-background: var(--dark-bg) !important;
 
   //Toast style on mobile
   @media(max-width: 745px) {
@@ -53,6 +55,13 @@ body {
     --p-button-primary-hover-border-color: var(--delete);
     --p-button-primary-active-background: var(--delete);
     --p-button-primary-active-border-color: var(--delete);
+  }
+
+  .p-dialog {
+    max-width: 90vw;
+    &-header {
+      padding: 20px 20px 0 20px;
+    }
   }
 
   .ql-editor ol li:before {

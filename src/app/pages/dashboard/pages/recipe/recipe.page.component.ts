@@ -4,7 +4,7 @@ import {
   linkedSignal,
   resource,
   inject,
-  computed,
+  computed, signal,
 } from '@angular/core';
 import { Editor } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
@@ -17,13 +17,23 @@ import { RecipeInterface } from '../../../../interfaces/recipes.interfaces';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {Dialog} from 'primeng/dialog';
+import {ShareDialogComponent} from '../../../../components/share-dialog/share-dialog.component';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.page.component.html',
   styleUrl: './recipe.page.component.scss',
   standalone: true,
-  imports: [Editor, FormsModule, Button, CustomInputComponent, TranslatePipe],
+  imports: [
+    Editor,
+    FormsModule,
+    Button,
+    CustomInputComponent,
+    TranslatePipe,
+    Dialog,
+    ShareDialogComponent,
+  ],
 })
 export class RecipePageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
@@ -55,6 +65,7 @@ export class RecipePageComponent {
   });
   isAuthor = linkedSignal(() => this.recipeResource.value()?.isAuthor ?? '');
   isEditing = linkedSignal<boolean>(() => this.editing());
+  showDialog = signal(false);
 
   editRecipe() {
     if (!this.recipeResource.value()) return;

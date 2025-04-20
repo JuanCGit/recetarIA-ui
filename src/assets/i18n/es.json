@@ -29,7 +29,11 @@
     "DELETED": "Receta eliminada",
     "DELETED_SUCCESSFULLY": "Receta eliminada con éxito",
     "EDITED": "Receta editada",
-    "EDITED_SUCCESSFULLY": "Receta editada con éxito"
+    "EDITED_SUCCESSFULLY": "Receta editada con éxito",
+    "SHARE": "Compartir",
+    "LINK_COPIED": "Enlace copiado",
+    "LINK_COPIED_SUCCESSFULLY": "Enlace copiado con éxito",
+    "COPY_LINK": "Copiar enlace"
   },
   "LIBRARY": {
     "SEARCH_RECIPE": "Buscar receta",

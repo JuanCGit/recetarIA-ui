@@ -9,7 +9,7 @@
       <h1 class="recipe-container__title">{{ recipeName() }}</h1>
     }
     <div class="recipe-container__actions">
-      <i class="pi pi-share-alt"></i>
+      <i class="pi pi-share-alt" (click)="showDialog.set(true)"></i>
       @if (isAuthor()) {
         <i
           class="pi pi-pencil"
@@ -48,3 +48,6 @@
     </div>
   }
 </div>
+<p-dialog [(visible)]="showDialog">
+  <app-share-dialog (closeDialog)="showDialog.set(false)" [pageTitle]="recipeName()" />
+</p-dialog>

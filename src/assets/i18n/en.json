@@ -29,7 +29,11 @@
     "DELETED": "Recipe deleted",
     "DELETED_SUCCESSFULLY": "Recipe successfully deleted",
     "EDITED": "Recipe edited",
-    "EDITED_SUCCESSFULLY": "Recipe successfully edited"
+    "EDITED_SUCCESSFULLY": "Recipe successfully edited",
+    "SHARE": "Share",
+    "LINK_COPIED": "Link copied",
+    "LINK_COPIED_SUCCESSFULLY": "Link successfully copied",
+    "COPY_LINK": "Copy link"
   },
   "LIBRARY": {
     "SEARCH_RECIPE": "Search recipe",

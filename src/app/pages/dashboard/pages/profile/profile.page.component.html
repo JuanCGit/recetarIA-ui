@@ -20,7 +20,7 @@
       <span>{{'PROFILE.NICK' | translate}}</span>
       <div class="profile__nick-input">
         <app-custom-input [customNgModel]="username" />
-        <p-button [disabled]="user()?.username === username()" (click)="authService.updateUserName(username()).subscribe()">{{ 'COMMON.SAVE' | translate }}</p-button>
+        <p-button [disabled]="authService.user()?.username === username()" (click)="updateUsername()">{{ 'COMMON.SAVE' | translate }}</p-button>
       </div>
     </div>
 

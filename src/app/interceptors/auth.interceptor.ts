@@ -1,22 +1,28 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { AuthService } from '../services/auth/auth.service';
-import { catchError, map, switchMap, take, throwError } from 'rxjs';
+import {catchError, map, switchMap, take, throwError} from 'rxjs';
+import {HttpInterceptorFn} from '@angular/common/http';
+import {inject} from '@angular/core';
+import {TokenService} from '../services/auth/token.service';
+import {Router} from '@angular/router';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const authService = inject(AuthService);
+  const tokenService = inject(TokenService);
 
-  return authService.token$.pipe(
+  return tokenService.token$.pipe(
     take(1),
-    map((token) =>
-      req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${token}`),
-      }),
-    ),
+    map((token) => {
+      if (token) {
+        return req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${token}`),
+        });
+      }
+      return req;
+    }),
     switchMap((request) => next(request)),
     catchError((error) => {
       if (error.status === 401) {
-        authService.logout();
+        const router = inject(Router);
+        localStorage.removeItem('token');
+        router.navigate(['/login']);
       }
 
       return throwError(() => error);

@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, inject, Input, linkedSignal} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {AvatarModule} from 'primeng/avatar';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +11,10 @@ import {AvatarModule} from 'primeng/avatar';
   imports: [RouterLink, RouterLinkActive, AvatarModule],
 })
 export class MenuComponent {
+  #authService = inject(AuthService);
+
+  firstUserLetter = linkedSignal(() => this.#authService.user()?.username.charAt(0).toUpperCase() ?? '');
+
   @Input() isMobile: boolean = false;
   protected readonly imagePath: string = '../../../assets/icons/';
   protected readonly menuItems = [

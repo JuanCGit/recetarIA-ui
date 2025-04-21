@@ -2,7 +2,7 @@ import {
   Component,
   computed,
   inject,
-  signal,
+  signal, WritableSignal,
 } from '@angular/core';
 import { CustomInputComponent } from '../../../../components/custom-input/custom-input.component';
 import { Router, RouterLink } from '@angular/router';
@@ -12,13 +12,23 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import {UpperCasePipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Dialog} from 'primeng/dialog';
+import {ShareDialogComponent} from '../../../../components/share-dialog/share-dialog.component';
+import {RecipeInterface} from '../../../../interfaces/recipes.interfaces';
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.page.component.html',
   styleUrl: './library.page.component.scss',
   standalone: true,
-  imports: [CustomInputComponent, RouterLink, UpperCasePipe, TranslatePipe],
+  imports: [
+    CustomInputComponent,
+    RouterLink,
+    UpperCasePipe,
+    TranslatePipe,
+    Dialog,
+    ShareDialogComponent,
+  ],
 })
 export class LibraryPageComponent {
   protected readonly screenSize = inject(ScreenSizeService);
@@ -38,6 +48,9 @@ export class LibraryPageComponent {
       recipe.name.toLowerCase().includes(this.recipesInput().toLowerCase()),
     );
   });
+  showDialog = signal(false);
+  recipeToShare: WritableSignal<RecipeInterface | undefined> = signal(undefined);
+  recipeLink = window.location.href + '/';
 
   navigateToRecipe(recipeId: number) {
     this.#router.navigate(['library', recipeId]);
@@ -45,7 +58,9 @@ export class LibraryPageComponent {
 
   navigateToEditRecipe(recipeId: number, event: MouseEvent) {
     event.stopPropagation();
-    this.#router.navigate(['library', recipeId], {queryParams: {editing: true}});
+    this.#router.navigate(['library', recipeId], {
+      queryParams: { editing: true },
+    });
   }
 
   deleteRecipe(recipeId: number, event: MouseEvent) {
@@ -58,20 +73,23 @@ export class LibraryPageComponent {
       rejectLabel: this.#translate.instant('COMMON.CANCEL'),
       acceptButtonStyleClass: 'delete-btn',
       accept: () => {
-        this.#recipesService
-          .deleteRecipe(recipeId)
-          .subscribe(() => {
-            this.recipesResource.reload();
-            this.#toastService.add({
-              summary: this.#translate.instant('RECIPE.DELETED'),
-              detail: this.#translate.instant('RECIPE.DELETED_SUCCESSFULLY'),
-              severity: 'info',
-              closable: false,
-              life: 1000,
-            });
+        this.#recipesService.deleteRecipe(recipeId).subscribe(() => {
+          this.recipesResource.reload();
+          this.#toastService.add({
+            summary: this.#translate.instant('RECIPE.DELETED'),
+            detail: this.#translate.instant('RECIPE.DELETED_SUCCESSFULLY'),
+            severity: 'info',
+            closable: false,
+            life: 1000,
           });
+        });
       },
     });
   }
 
+  shareRecipe(recipe: RecipeInterface, event: MouseEvent) {
+    event.stopPropagation();
+    this.recipeToShare.set(recipe);
+    this.showDialog.set(true);
+  }
 }

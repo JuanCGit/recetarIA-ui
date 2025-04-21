@@ -25,7 +25,7 @@
             </div>
 
             <div class="cards__recipe-lower">
-              <img alt="share" class="share" src="assets/icons/share.svg" />
+              <img alt="share" class="share" src="assets/icons/share.svg" (click)="shareRecipe(recipe, $event)" />
               <div class="actions">
                 <img
                   alt="delete"
@@ -64,3 +64,9 @@
     </div>
   }
 </div>
+@if(recipeToShare(); as recipeToShare) {
+  <p-dialog [(visible)]="showDialog">
+    <app-share-dialog (closeDialog)="showDialog.set(false)" [pageTitle]="recipeToShare.name" [pageLink]="recipeLink + recipeToShare.id"/>
+  </p-dialog>
+}
+

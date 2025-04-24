@@ -4,7 +4,7 @@ export interface LoginRequestInterface {
 }
 
 export interface RegisterRequestInterface extends LoginRequestInterface {
-  name: string;
+  username: string;
 }
 
 export interface TokenInterface {

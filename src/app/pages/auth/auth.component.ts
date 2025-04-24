@@ -13,6 +13,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { defer, map, switchMap, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth/auth.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth',
@@ -23,6 +24,7 @@ import { AuthService } from '../../services/auth/auth.service';
     ButtonModule,
     RouterLink,
     ReactiveFormsModule,
+    TranslatePipe,
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
@@ -64,7 +66,7 @@ export class AuthComponent {
             password: String(this.authForm.controls.password.value),
           })
         : this.#authService.registerUser({
-            name: String(this.authForm.controls.name.value),
+            username: String(this.authForm.controls.name.value),
             email: String(this.authForm.controls.email.value),
             password: String(this.authForm.controls.password.value),
           }),

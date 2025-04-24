@@ -11,7 +11,7 @@
     "CANCEL": "Cancel"
   },
   "PROFILE": {
-    "NICK": "Username:",
+    "NICK": "Username",
     "CHANGE_IMAGE": "Change image",
     "LANGUAGE": "Language:",
     "LANGUAGES": {
@@ -19,7 +19,13 @@
       "ES": "Spanish",
       "CA": "Catalan"
     },
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "MAIL": "Email",
+    "PASSWORD": "Password",
+    "SUBMIT": "Send",
+    "CREATE_ACCOUNT": "Create an account",
+    "LOGIN": "Login",
+    "REGISTER": "Register"
   },
   "RECIPE": {
     "NAME": "Recipe name",

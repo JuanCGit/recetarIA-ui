@@ -11,7 +11,7 @@
     "CANCEL": "Cancelar"
   },
   "PROFILE": {
-    "NICK": "Nombre de usuario:",
+    "NICK": "Nombre de usuario",
     "CHANGE_IMAGE": "Cambiar imagen",
     "LANGUAGE": "Idioma:",
     "LANGUAGES": {
@@ -19,7 +19,13 @@
       "ES": "Español",
       "CA": "Catalán"
     },
-    "LOGOUT": "Cerrar sesión"
+    "LOGOUT": "Cerrar sesión",
+    "MAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "SUBMIT": "Enviar",
+    "CREATE_ACCOUNT": "Crea una cuenta",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Registrarse"
   },
   "RECIPE": {
     "NAME": "Nombre de la receta",
